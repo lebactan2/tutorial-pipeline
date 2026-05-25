@@ -1,0 +1,74 @@
+[2026-04-22 20:43:31] [INFO] === Phase 1: Project Structure ===
+[2026-04-22 20:43:31] [INFO] Folder exists: scripts
+[2026-04-22 20:43:31] [INFO] Folder exists: config
+[2026-04-22 20:43:31] [INFO] Folder exists: voice_refs
+[2026-04-22 20:43:31] [INFO] Folder exists: inbox
+[2026-04-22 20:43:31] [INFO] Folder exists: working
+[2026-04-22 20:43:31] [INFO] Folder exists: output
+[2026-04-22 20:43:31] [INFO] Folder exists: logs
+[2026-04-22 20:43:31] [INFO] Created config\.env from template -- add your API keys there
+[2026-04-22 20:43:31] [INFO] === Phase 2: System Dependencies ===
+[2026-04-22 20:43:31] [WARN] Python found but not 3.11 (Python 3.13.12). Installing Python 3.11...
+[2026-04-22 20:44:41] [INFO] PATH refreshed
+[2026-04-22 20:44:42] [INFO] Installing FFmpeg...
+[2026-04-22 20:45:12] [INFO] PATH refreshed
+[2026-04-22 20:45:13] [INFO] Git already installed: git version 2.52.0.windows.1
+[2026-04-22 20:45:13] [INFO] Installing uv...
+[2026-04-22 20:45:17] [INFO] PATH refreshed
+[2026-04-22 20:45:17] [INFO] === Verifying installations ===
+[2026-04-22 20:45:17] [INFO]   OK: python
+[2026-04-22 20:45:17] [INFO]   OK: ffmpeg
+[2026-04-22 20:45:17] [INFO]   OK: git
+[2026-04-22 20:45:17] [INFO]   OK: uv
+[2026-04-22 20:45:17] [INFO] === Phase 3: Python Environment ===
+[2026-04-22 20:45:17] [INFO] Creating virtual environment with Python 3.11...
+[2026-04-22 20:45:19] [INFO] Virtual environment activated
+[2026-04-22 20:45:19] [INFO] Installing Python packages...
+[2026-04-22 20:50:07] [INFO] Core packages installed
+[2026-04-22 20:50:07] [INFO] === Phase 4: VieNeu-TTS ===
+[2026-04-22 20:50:07] [INFO] Cloning VieNeu-TTS...
+[2026-04-22 20:50:13] [INFO] Installing VieNeu-TTS...
+[2026-04-22 20:50:16] [INFO] VieNeu-TTS installed (editable mode)
+[2026-04-22 20:50:16] [INFO] Testing VieNeu-TTS import...
+[2026-04-22 21:00:58] [INFO] === Phase 1: Project Structure ===
+[2026-04-22 21:00:58] [INFO] Folder exists: scripts
+[2026-04-22 21:00:58] [INFO] Folder exists: config
+[2026-04-22 21:00:58] [INFO] Folder exists: voice_refs
+[2026-04-22 21:00:58] [INFO] Folder exists: inbox
+[2026-04-22 21:00:58] [INFO] Folder exists: working
+[2026-04-22 21:00:58] [INFO] Folder exists: output
+[2026-04-22 21:00:58] [INFO] Folder exists: logs
+[2026-04-22 21:00:58] [INFO] === Phase 2: System Dependencies ===
+[2026-04-22 21:00:58] [INFO] Python 3.11 already installed: Python 3.11.9
+[2026-04-22 21:00:59] [INFO] FFmpeg already installed: ffmpeg version 8.1-full_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers
+[2026-04-22 21:01:00] [INFO] Git already installed: git version 2.52.0.windows.1
+[2026-04-22 21:01:00] [INFO] uv already installed: uv 0.11.7 (9d177269e 2026-04-15 x86_64-pc-windows-msvc)
+[2026-04-22 21:01:00] [INFO] === Verifying installations ===
+[2026-04-22 21:01:00] [INFO]   OK: python
+[2026-04-22 21:01:00] [INFO]   OK: ffmpeg
+[2026-04-22 21:01:00] [INFO]   OK: git
+[2026-04-22 21:01:00] [INFO]   OK: uv
+[2026-04-22 21:01:00] [INFO] === Phase 3: Python Environment ===
+[2026-04-22 21:01:00] [INFO] Virtual environment already exists
+[2026-04-22 21:01:00] [INFO] Virtual environment activated
+[2026-04-22 21:01:00] [INFO] Installing Python packages...
+[2026-04-22 21:01:00] [INFO] Core packages installed
+[2026-04-22 21:01:00] [INFO] === Phase 4: VieNeu-TTS ===
+[2026-04-22 21:01:00] [INFO] VieNeu-TTS directory already exists, pulling latest...
+[2026-04-22 21:01:01] [INFO] Installing VieNeu-TTS...
+[2026-04-22 21:01:04] [INFO] VieNeu-TTS installed (editable mode)
+[2026-04-22 21:01:04] [INFO] Testing VieNeu-TTS import...
+[2026-04-22 21:01:05] [INFO] VieNeu-TTS test passed
+[2026-04-22 21:01:05] [INFO] === Phase 5: GPU Detection ===
+[2026-04-22 21:01:05] [INFO] No NVIDIA GPU detected (nvidia-smi failed)
+[2026-04-22 21:01:05] [INFO] System config written to config\system.json
+[2026-04-22 21:01:05] [INFO]   Whisper: medium on cpu (int8)
+[2026-04-22 21:01:05] [INFO]   VieNeu: turbo mode on cpu
+[2026-04-22 21:01:05] [INFO] =========================================
+[2026-04-22 21:01:05] [INFO] Setup complete!
+[2026-04-22 21:01:05] [INFO] =========================================
+[2026-04-22 21:01:05] [INFO] 
+[2026-04-22 21:01:05] [INFO] Next steps:
+[2026-04-22 21:01:05] [INFO]   1. Add your API keys to config\.env
+[2026-04-22 21:01:05] [INFO]   2. Place your voice reference as voice_refs\reference.wav
+[2026-04-22 21:01:05] [INFO]   3. Run: .\scripts\run.ps1 -VideoPath inbox\your_video.mp4

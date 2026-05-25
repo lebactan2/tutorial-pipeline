@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pipeline Control Center</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar glass-panel">
+            <div class="sidebar-header">
+                <h2>Control Center</h2>
+                <button id="btnSettings" class="icon-btn" title="Settings">⚙️</button>
+            </div>
+            
+            <div class="section youtube-section">
+                <h3>New Video</h3>
+                <div class="input-group">
+                    <label for="videoSource" style="display:block; margin-bottom:5px; font-size:0.85rem; color:var(--text-muted);">YouTube URL or Absolute File Path</label>
+                    <input type="text" id="videoSource" placeholder="e.g. https://... or C:\Videos\my_vid.mp4">
+                </div>
+                <div class="input-group" style="margin-top: 10px;">
+                    <label for="transcriptUpload" class="file-label">Custom Transcript (.srt, .json)</label>
+                    <input type="file" id="transcriptUpload" accept=".srt,.json" class="file-input">
+                </div>
+                <div class="input-group" style="margin-top: 10px; display: flex; gap: 8px; align-items: center;">
+                    <select id="voiceSelect" style="flex: 1;">
+                        <option value="">Default Voice</option>
+                    </select>
+                    <button id="btnUploadVoice" class="secondary-btn" title="Upload Voice">+</button>
+                    <input type="file" id="voiceUploadInput" accept=".wav" style="display: none;">
+                </div>
+                <div class="input-group" style="margin-top: 15px;">
+                    <button id="downloadBtn" class="primary-btn">Process</button>
+                </div>
+                <div id="statusMessage" class="status-msg hidden"></div>
+            </div>
+
+            <div class="section list-section">
+                <h3>Generated Drafts</h3>
+                <ul id="videoList" class="video-list">
+                    <!-- Video items populated by JS -->
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content glass-panel">
+            <header class="content-header">
+                <h1 id="currentVideoTitle">Select a video to review</h1>
+                <div class="controls hidden" id="videoControls">
+                    <button id="btnLocal" class="toggle-btn active">Local Voice</button>
+                    <button id="btnCloud" class="toggle-btn">Cloud Voice</button>
+                </div>
+            </header>
+
+            <div class="review-area hidden" id="reviewArea">
+                <div class="video-wrapper">
+                    <video id="player" controls crossorigin="anonymous">
+                        <track id="subtitlesTrack" label="Subtitles" kind="subtitles" srclang="en" default>
+                    </video>
+                </div>
+                
+                <div class="srt-wrapper">
+                    <h3>Subtitles</h3>
+                    <pre id="srtContent">Loading subtitles...</pre>
+                </div>
+            </div>
+            
+            <div id="emptyState" class="empty-state">
+                <div class="icon">🎬</div>
+                <p>No video selected. Choose one from the sidebar or process a new YouTube link.</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal hidden">
+        <div class="modal-content glass-panel">
+            <div class="modal-header">
+                <h2>Settings</h2>
+                <button id="btnCloseSettings" class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="settings-group">
+                    <label>LLM Provider for Cleanup</label>
+                    <select id="llmProvider">
+                        <option value="claude">Anthropic Claude</option>
+                        <option value="antigravity">Antigravity (Gemini)</option>
+                        <option value="openrouter">OpenRouter</option>
+                        <option value="custom">Custom API</option>
+                    </select>
+                </div>
+                
+                <div class="settings-group" id="openrouterGroup">
+                    <label>OpenRouter Model</label>
+                    <select id="openrouterModel">
+                        <option value="openai/gpt-4o">GPT-4o</option>
+                        <option value="anthropic/claude-3.5-sonnet">Claude 3.5 Sonnet</option>
+                        <option value="deepseek/deepseek-chat">DeepSeek Chat</option>
+                        <option value="custom">Other (Custom)</option>
+                    </select>
+                    <input type="text" id="openrouterCustomModel" placeholder="e.g. google/gemini-pro" style="display:none; margin-top:5px;">
+                </div>
+
+                <div class="settings-group" id="customApiGroup" style="display:none;">
+                    <label>Custom API Base URL</label>
+                    <input type="text" id="customApiBaseUrl" placeholder="https://api.example.com/v1">
+                    <label style="margin-top:10px;">Custom Model Name</label>
+                    <input type="text" id="customModel" placeholder="e.g. llama-3">
+                </div>
+
+                <hr style="margin: 20px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
+                
+                <h3>API Keys</h3>
+                <div class="settings-group">
+                    <label>Anthropic API Key</label>
+                    <input type="password" id="keyAnthropic" placeholder="sk-ant-...">
+                </div>
+                <div class="settings-group">
+                    <label>Antigravity API Key</label>
+                    <input type="password" id="keyAntigravity" placeholder="...">
+                </div>
+                <div class="settings-group">
+                    <label>OpenRouter API Key</label>
+                    <input type="password" id="keyOpenRouter" placeholder="sk-or-v1-...">
+                </div>
+                <div class="settings-group">
+                    <label>MiniMax API Key (Optional)</label>
+                    <input type="password" id="keyMinimax" placeholder="...">
+                </div>
+                <div class="settings-group" id="customApiKeyGroup" style="display:none;">
+                    <label>Custom API Key</label>
+                    <input type="password" id="keyCustom" placeholder="...">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <span id="settingsStatus" class="status-msg hidden" style="margin-right:auto;">Saved!</span>
+                <button id="btnSaveSettings" class="primary-btn">Save Settings</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

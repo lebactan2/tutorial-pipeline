@@ -1,0 +1,816 @@
+2026-04-22 21:32:35,851 [INFO] === Stage 1: Transcription ===
+2026-04-22 21:32:35,852 [INFO] Input: C:\tutorial-pipeline\inbox\lab8_new.mp4
+2026-04-22 21:32:35,852 [INFO] Output: C:\tutorial-pipeline\working\lab8_new.transcript.json
+2026-04-22 22:12:02,634 [INFO] === Stage 1: Transcription ===
+2026-04-22 22:12:02,636 [INFO] Input: C:\tutorial-pipeline\inbox\lab8_new.mp4
+2026-04-22 22:12:02,636 [INFO] Output: C:\tutorial-pipeline\working\lab8_new.transcript.json
+2026-04-22 22:16:34,307 [INFO] === Stage 1: Transcription ===
+2026-04-22 22:16:34,307 [INFO] Input: C:\tutorial-pipeline\inbox\lab8_new.mp4
+2026-04-22 22:16:34,308 [INFO] Output: C:\tutorial-pipeline\working\lab8_new.transcript.json
+2026-04-22 22:16:35,130 [INFO] Loading Whisper model: medium on cpu (int8)
+2026-04-22 22:16:42,411 [INFO] HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-medium/revision/main "HTTP/1.1 200 OK"
+2026-04-22 22:16:42,737 [INFO] HTTP Request: HEAD https://huggingface.co/Systran/faster-whisper-medium/resolve/08e178d48790749d25932bbc082711ddcfdfbc4f/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-22 22:16:42,747 [INFO] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Systran/faster-whisper-medium/08e178d48790749d25932bbc082711ddcfdfbc4f/config.json "HTTP/1.1 200 OK"
+2026-04-22 22:16:42,762 [INFO] HTTP Request: HEAD https://huggingface.co/Systran/faster-whisper-medium/resolve/08e178d48790749d25932bbc082711ddcfdfbc4f/model.bin "HTTP/1.1 302 Found"
+2026-04-22 22:16:42,765 [INFO] HTTP Request: HEAD https://huggingface.co/Systran/faster-whisper-medium/resolve/08e178d48790749d25932bbc082711ddcfdfbc4f/tokenizer.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-22 22:16:42,767 [INFO] HTTP Request: GET https://huggingface.co/api/resolve-cache/models/Systran/faster-whisper-medium/08e178d48790749d25932bbc082711ddcfdfbc4f/config.json "HTTP/1.1 200 OK"
+2026-04-22 22:16:42,775 [INFO] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Systran/faster-whisper-medium/08e178d48790749d25932bbc082711ddcfdfbc4f/tokenizer.json "HTTP/1.1 200 OK"
+2026-04-22 22:16:42,779 [INFO] HTTP Request: HEAD https://huggingface.co/Systran/faster-whisper-medium/resolve/08e178d48790749d25932bbc082711ddcfdfbc4f/vocabulary.txt "HTTP/1.1 307 Temporary Redirect"
+2026-04-22 22:16:42,781 [WARNING] Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-04-22 22:16:42,793 [INFO] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Systran/faster-whisper-medium/08e178d48790749d25932bbc082711ddcfdfbc4f/vocabulary.txt "HTTP/1.1 200 OK"
+2026-04-22 22:16:42,794 [INFO] HTTP Request: GET https://huggingface.co/api/resolve-cache/models/Systran/faster-whisper-medium/08e178d48790749d25932bbc082711ddcfdfbc4f/tokenizer.json "HTTP/1.1 200 OK"
+2026-04-22 22:16:42,811 [INFO] HTTP Request: GET https://huggingface.co/api/resolve-cache/models/Systran/faster-whisper-medium/08e178d48790749d25932bbc082711ddcfdfbc4f/vocabulary.txt "HTTP/1.1 200 OK"
+2026-04-22 22:16:43,160 [INFO] HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-medium/xet-read-token/08e178d48790749d25932bbc082711ddcfdfbc4f "HTTP/1.1 200 OK"
+2026-04-22 22:17:32,150 [INFO] Transcribing: C:\tutorial-pipeline\inbox\lab8_new.mp4
+2026-04-22 22:17:42,347 [INFO] Processing audio with duration 01:21:22.483
+2026-04-22 22:18:06,349 [INFO] VAD filter removed 50:07.032 of audio
+2026-04-22 22:18:15,407 [INFO] Detected language 'en' with probability 0.97
+2026-04-22 22:18:15,456 [INFO] Detected language: en (probability: 0.97)
+2026-04-22 22:18:25,485 [INFO] === Stage 1: Transcription ===
+2026-04-22 22:18:25,485 [INFO] Input: C:\tutorial-pipeline\inbox\lab8_new.mp4
+2026-04-22 22:18:25,486 [INFO] Output: C:\tutorial-pipeline\working\lab8_new.transcript.json
+2026-04-22 22:18:26,351 [INFO] Loading Whisper model: medium on cpu (int8)
+2026-04-22 22:18:27,796 [INFO] HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-medium/revision/main "HTTP/1.1 200 OK"
+2026-04-22 22:18:30,651 [INFO]   [9.0s - 23.4s] [en] Okay, coming back to the demo today, so basically you have a character, just an 
+2026-04-22 22:18:30,653 [INFO]   [24.3s - 35.1s] [en] Alright, and first thing first you want to do is you want to join all of the sep
+2026-04-22 22:18:32,722 [INFO] Transcribing: C:\tutorial-pipeline\inbox\lab8_new.mp4
+2026-04-22 22:18:41,284 [INFO] Processing audio with duration 01:21:22.483
+2026-04-22 22:18:50,734 [INFO]   [35.1s - 48.7s] [en] Okay, so over here you're going to see that I have the base body and it's actual
+2026-04-22 22:18:50,737 [INFO]   [49.9s - 68.3s] [en] Alright, and this object over here is joined together using Ctrl J in Blender, a
+2026-04-22 22:19:06,269 [INFO]   [69.2s - 93.1s] [en] And then next thing you want to do is I'm going to explain how you can bind all 
+2026-04-22 22:19:06,927 [INFO] VAD filter removed 50:07.032 of audio
+2026-04-22 22:19:16,485 [INFO] Detected language 'en' with probability 0.97
+2026-04-22 22:19:16,517 [INFO] Detected language: en (probability: 0.97)
+2026-04-22 22:19:23,252 [INFO]   [93.1s - 120.7s] [en] Okay, because now if you take a look at the shading over here, you're going to s
+2026-04-22 22:19:31,069 [INFO]   [9.0s - 23.4s] [en] Okay, coming back to the demo today, so basically you have a character, just an 
+2026-04-22 22:19:31,071 [INFO]   [24.3s - 35.1s] [en] Alright, and first thing first you want to do is you want to join all of the sep
+2026-04-22 22:19:41,532 [INFO]   [120.7s - 153.3s] [en] If I click on it, you're going to see that it's a different texture file, so wha
+2026-04-22 22:19:48,634 [INFO]   [35.1s - 48.7s] [en] Okay, so over here you're going to see that I have the base body and it's actual
+2026-04-22 22:19:48,634 [INFO]   [49.9s - 68.3s] [en] Alright, and this object over here is joined together using Ctrl J in Blender, a
+2026-04-22 22:20:00,294 [INFO]   [153.3s - 172.5s] [en] You can actually, in theory, you can actually have it, but it's going to be more
+2026-04-22 22:20:00,296 [INFO]   [173.0s - 176.5s] [en] So that's why I'm explaining this workflow for you, okay.
+2026-04-22 22:20:04,460 [INFO]   [69.2s - 93.1s] [en] And then next thing you want to do is I'm going to explain how you can bind all 
+2026-04-22 22:20:22,366 [INFO]   [176.9s - 227.3s] [en] Now, on the characters over here, to be able to bind all textures into one file,
+2026-04-22 22:20:23,166 [INFO]   [93.1s - 120.7s] [en] Okay, because now if you take a look at the shading over here, you're going to s
+2026-04-22 22:20:41,309 [INFO]   [227.3s - 270.3s] [en] And you want to set the resolutions, width and height of this texture as 4K, I'm
+2026-04-22 22:20:47,758 [INFO] === Stage 1: Transcription ===
+2026-04-22 22:20:47,758 [INFO] Input: C:\tutorial-pipeline\inbox\lab8_new.mp4
+2026-04-22 22:20:47,758 [INFO] Output: C:\tutorial-pipeline\working\lab8_new.transcript.json
+2026-04-22 22:20:48,619 [INFO] Loading Whisper model: medium on cpu (int8)
+2026-04-22 22:20:49,976 [INFO] HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-medium/revision/main "HTTP/1.1 200 OK"
+2026-04-22 22:20:55,246 [INFO] Transcribing: C:\tutorial-pipeline\inbox\lab8_new.mp4
+2026-04-22 22:21:03,866 [INFO]   [273.2s - 306.0s] [en] New image, and you're going to see, we create a new texture over here, and if we
+2026-04-22 22:21:04,664 [INFO] Processing audio with duration 01:21:22.483
+2026-04-22 22:21:29,197 [INFO]   [306.3s - 353.2s] [en] because we want to tell Blender that, hey, I want to bind all of this texture, a
+2026-04-22 22:21:29,353 [INFO] VAD filter removed 50:07.032 of audio
+2026-04-22 22:21:38,288 [INFO] Detected language 'en' with probability 0.97
+2026-04-22 22:21:38,323 [INFO] Detected language: en (probability: 0.97)
+2026-04-22 22:21:49,871 [INFO]   [353.2s - 400.8s] [en] base body, copy and paste, yeah, alright, and over here, instead of this browsin
+2026-04-22 22:21:53,316 [INFO]   [9.0s - 23.4s] [en] Okay, coming back to the demo today, so basically you have a character, just an 
+2026-04-22 22:21:53,319 [INFO]   [24.3s - 35.1s] [en] Alright, and first thing first you want to do is you want to join all of the sep
+2026-04-22 22:22:09,888 [INFO]   [400.8s - 438.6s] [en] you're going to see that all the material, sorry, all the UV map over here is ov
+2026-04-22 22:22:11,408 [INFO]   [35.1s - 48.7s] [en] Okay, so over here you're going to see that I have the base body and it's actual
+2026-04-22 22:22:11,408 [INFO]   [49.9s - 68.3s] [en] Alright, and this object over here is joined together using Ctrl J in Blender, a
+2026-04-22 22:22:27,869 [INFO]   [69.2s - 93.1s] [en] And then next thing you want to do is I'm going to explain how you can bind all 
+2026-04-22 22:22:29,392 [INFO]   [438.6s - 471.1s] [en] So paste all of the material inside of each of the material over here, copy and 
+2026-04-22 22:22:46,462 [INFO]   [472.2s - 501.0s] [en] Oh, don't ya? Who said on? Yeah? Who? What's your name? Okay, and we press A to 
+2026-04-22 22:22:46,559 [INFO]   [93.1s - 120.7s] [en] Okay, because now if you take a look at the shading over here, you're going to s
+2026-04-22 22:23:05,255 [INFO]   [504.1s - 552.0s] [en] Now, if you don't see the UV editor over here, click on this button, little butt
+2026-04-22 22:23:07,014 [INFO]   [120.7s - 153.3s] [en] If I click on it, you're going to see that it's a different texture file, so wha
+2026-04-22 22:23:27,849 [INFO]   [553.7s - 570.7s] [en] Click on it, and you're going to see it try to scale up all of the islands over 
+2026-04-22 22:23:28,069 [INFO]   [153.3s - 172.5s] [en] You can actually, in theory, you can actually have it, but it's going to be more
+2026-04-22 22:23:28,070 [INFO]   [173.0s - 176.5s] [en] So that's why I'm explaining this workflow for you, okay.
+2026-04-22 22:23:44,134 [INFO]   [570.7s - 598.2s] [en] And then we're going to click on Pack Islands, alright, before click on Pack, ma
+2026-04-22 22:23:52,264 [INFO]   [176.9s - 227.3s] [en] Now, on the characters over here, to be able to bind all textures into one file,
+2026-04-22 22:24:00,947 [INFO]   [598.2s - 628.9s] [en] If you set it too low, when you put the texture on it, maybe it's overlapping an
+2026-04-22 22:24:11,368 [INFO]   [227.3s - 270.3s] [en] And you want to set the resolutions, width and height of this texture as 4K, I'm
+2026-04-22 22:24:22,128 [INFO]   [639.5s - 654.6s] [en] Because the Smart UV is going to do all the scene again, and this model actually
+2026-04-22 22:24:22,130 [INFO]   [658.5s - 664.6s] [en] So what you get in DMS1 is using Smart UV to UV and wrap the whole object, is th
+2026-04-22 22:24:34,033 [INFO]   [273.2s - 306.0s] [en] New image, and you're going to see, we create a new texture over here, and if we
+2026-04-22 22:24:41,461 [INFO]   [665.4s - 704.5s] [en] Smart UV is not very smart, because let me tell you, let's do Smart UV, you see 
+2026-04-22 22:24:49,256 [INFO] === Stage 1: Transcription ===
+2026-04-22 22:24:49,258 [INFO] Input: C:\tutorial-pipeline\inbox\lab8_new.mp4
+2026-04-22 22:24:49,258 [INFO] Output: C:\tutorial-pipeline\working\lab8_new.transcript.json
+2026-04-22 22:24:50,018 [INFO] Loading Whisper model: medium on cpu (int8)
+2026-04-22 22:24:51,365 [INFO] HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-medium/revision/main "HTTP/1.1 200 OK"
+2026-04-22 22:24:56,123 [INFO] Transcribing: C:\tutorial-pipeline\inbox\lab8_new.mp4
+2026-04-22 22:25:01,559 [INFO]   [705.1s - 727.8s] [en] Because when you use Smart UV, the algorithm will try to be smart by trying to d
+2026-04-22 22:25:01,559 [INFO]   [728.6s - 738.6s] [en] And the model you see, anyone learn about scene in DMS1, like mark scene for 3D 
+2026-04-22 22:25:04,618 [INFO] Processing audio with duration 01:21:22.483
+2026-04-22 22:25:21,742 [INFO]   [739.8s - 746.3s] [en] Oh my god, what's going on?
+2026-04-22 22:25:21,742 [INFO]   [747.7s - 762.8s] [en] So let me just show you, let me just pack the island first, before doing this, s
+2026-04-22 22:25:21,744 [INFO]   [764.0s - 781.5s] [en] Before doing this, I have to go to the object data property and go into UV map, 
+2026-04-22 22:25:25,212 [INFO] VAD filter removed 50:07.032 of audio
+2026-04-22 22:25:34,130 [INFO] Detected language 'en' with probability 0.97
+2026-04-22 22:25:34,163 [INFO] Detected language: en (probability: 0.97)
+2026-04-22 22:25:40,869 [INFO]   [782.3s - 796.7s] [en] Alright, I need to go into object data property, which is this little button ove
+2026-04-22 22:25:40,870 [INFO]   [797.5s - 814.5s] [en] And I'm going to call this back, alright, and make sure you select this new UV m
+2026-04-22 22:25:47,451 [INFO]   [9.0s - 23.4s] [en] Okay, coming back to the demo today, so basically you have a character, just an 
+2026-04-22 22:25:47,451 [INFO]   [24.3s - 35.1s] [en] Alright, and first thing first you want to do is you want to join all of the sep
+2026-04-22 22:26:01,278 [INFO]   [814.5s - 832.1s] [en] And just to answer your questions, why Smart UV unwrapping is not working, is be
+2026-04-22 22:26:01,278 [INFO]   [833.1s - 840.8s] [en] So seam is basically, think about it as, this is what is called seam, okay?
+2026-04-22 22:26:04,243 [INFO]   [35.1s - 48.7s] [en] Okay, so over here you're going to see that I have the base body and it's actual
+2026-04-22 22:26:04,246 [INFO]   [49.9s - 68.3s] [en] Alright, and this object over here is joined together using Ctrl J in Blender, a
+2026-04-22 22:26:18,934 [INFO]   [840.8s - 863.5s] [en] So when you unwrap an object in 3D, think about it as a pattern that is being la
+2026-04-22 22:26:20,149 [INFO]   [69.2s - 93.1s] [en] And then next thing you want to do is I'm going to explain how you can bind all 
+2026-04-22 22:26:38,771 [INFO]   [93.1s - 120.7s] [en] Okay, because now if you take a look at the shading over here, you're going to s
+2026-04-22 22:26:44,020 [INFO]   [863.5s - 880.0s] [en] For example, I have a texture over here, and you see that the texture over here 
+2026-04-22 22:26:44,020 [INFO]   [880.5s - 886.4s] [en] But around this area, you're going to see that it discontinue, because there's a
+2026-04-22 22:26:44,022 [INFO]   [888.6s - 898.7s] [en] So when you use Smart UV unwrap, it's not very smart because it's trying to do i
+2026-04-22 22:26:58,768 [INFO]   [120.7s - 153.3s] [en] If I click on it, you're going to see that it's a different texture file, so wha
+2026-04-22 22:27:01,065 [INFO]   [901.5s - 920.7s] [en] So it's good only for texture that is mostly procedural, but with texture that h
+2026-04-22 22:27:19,118 [INFO]   [153.3s - 172.5s] [en] You can actually, in theory, you can actually have it, but it's going to be more
+2026-04-22 22:27:19,119 [INFO]   [173.0s - 176.5s] [en] So that's why I'm explaining this workflow for you, okay.
+2026-04-22 22:27:24,946 [INFO]   [923.6s - 936.6s] [en] Unfortunately, I won't have the time to explain before this course was about 3D 
+2026-04-22 22:27:24,948 [INFO]   [938.3s - 951.6s] [en] But bear with me, okay? Just remember that you need to learn how to mark seams t
+2026-04-22 22:27:24,949 [INFO]   [952.1s - 955.7s] [en] Limit your use of Smart UV, okay?
+2026-04-22 22:27:42,888 [INFO]   [176.9s - 227.3s] [en] Now, on the characters over here, to be able to bind all textures into one file,
+2026-04-22 22:27:46,299 [INFO]   [955.9s - 967.5s] [en] Now, going back to the lectures, so you have this object over here with the char
+2026-04-22 22:27:46,301 [INFO]   [967.5s - 976.8s] [en] And make sure you are on the bug UV map, okay? Bug UV map over here.
+2026-04-22 22:27:46,302 [INFO]   [978.5s - 995.1s] [en] And this button is still on for the UV map on top, UV average island scale and U
+2026-04-22 22:28:02,005 [INFO]   [227.3s - 270.3s] [en] And you want to set the resolutions, width and height of this texture as 4K, I'm
+2026-04-22 22:28:06,701 [INFO]   [1012.6s - 1022.4s] [en] So you have a new UV map that is ready to bug, okay?
+2026-04-22 22:28:06,703 [INFO]   [1023.2s - 1031.3s] [en] Why you need a new UV map is because the old UV map over here, you're going to s
+2026-04-22 22:28:06,703 [INFO]   [1032.1s - 1040.8s] [en] So we cannot bug using this UV map, and we have to create a new UV map for buggi
+2026-04-22 22:28:25,020 [INFO]   [273.2s - 306.0s] [en] New image, and you're going to see, we create a new texture over here, and if we
+2026-04-22 22:28:27,711 [INFO]   [1041.3s - 1046.0s] [en] And when you have this selected, okay?
+2026-04-22 22:28:27,712 [INFO]   [1047.3s - 1064.0s] [en] And then you make sure that all of the material over here, you click on the unif
+2026-04-22 22:28:27,713 [INFO]   [1065.6s - 1080.9s] [en] Make sure that you select it, this material over here, and then you go into rend
+2026-04-22 22:28:47,908 [INFO]   [306.3s - 353.2s] [en] because we want to tell Blender that, hey, I want to bind all of this texture, a
+2026-04-22 22:28:49,125 [INFO]   [1085.4s - 1098.7s] [en] Make sure the render engine is cycle, and you go down to bugs, okay?
+2026-04-22 22:28:49,126 [INFO]   [1103.6s - 1116.0s] [en] And the bug type over here, you're going to choose diffuse, alright?
+2026-04-22 22:28:49,127 [INFO]   [1117.0s - 1124.2s] [en] Diffuse is another name for color maps. Are you following along? Yeah?
+2026-04-22 22:28:49,127 [INFO]   [1127.3s - 1133.4s] [en] Diffuse, okay? Uncheck direct and indirect, okay?
+2026-04-22 22:29:11,146 [INFO]   [353.2s - 400.8s] [en] base body, copy and paste, yeah, alright, and over here, instead of this browsin
+2026-04-22 22:29:12,565 [INFO]   [1133.4s - 1139.7s] [en] Because this is basically how lighting is going to bounce on the objects.
+2026-04-22 22:29:12,566 [INFO]   [1140.4s - 1148.0s] [en] And to bug or to convert all the texture into a unified texture, we don't need l
+2026-04-22 22:29:12,566 [INFO]   [1148.8s - 1151.7s] [en] So uncheck direct and indirect, alright?
+2026-04-22 22:29:12,567 [INFO]   [1165.1s - 1169.8s] [en] And then size over here, we're going to leave it as 8 instead of 16.
+2026-04-22 22:29:12,567 [INFO]   [1170.4s - 1176.5s] [en] It's basically the margin between the islands over here, alright?
+2026-04-22 22:29:36,878 [INFO]   [400.8s - 438.6s] [en] you're going to see that all the material, sorry, all the UV map over here is ov
+2026-04-22 22:29:37,886 [INFO]   [1176.5s - 1193.3s] [en] And then we're going to click on bugs, and you're going to see a little loading 
+2026-04-22 22:29:37,887 [INFO]   [1193.6s - 1204.1s] [en] It's basically bugging all of the separate texture in each of the objects over h
+2026-04-22 22:29:37,888 [INFO]   [1206.2s - 1217.9s] [en] And let's wait for it. Oh, don't go. You follow along.
+2026-04-22 22:29:57,903 [INFO]   [438.6s - 471.1s] [en] So paste all of the material inside of each of the material over here, copy and 
+2026-04-22 22:29:59,719 [INFO]   [1219.1s - 1224.5s] [en] Hello. Ming, help the students.
+2026-04-22 22:29:59,720 [INFO]   [1285.9s - 1304.6s] [en] Select every map. Where's the bag?
+2026-04-22 22:29:59,721 [INFO]   [1316.8s - 1320.2s] [en] Every object, every material.
+2026-04-22 22:29:59,721 [INFO]   [1358.5s - 1359.8s] [en] Show me the notes.
+2026-04-22 22:29:59,721 [INFO]   [1370.1s - 1373.1s] [en] I think you missed some of the spots.
+2026-04-22 22:29:59,722 [INFO]   [1375.2s - 1377.0s] [en] Show me all the material.
+2026-04-22 22:29:59,722 [INFO]   [1388.6s - 1389.1s] [en] The bag.
+2026-04-22 22:29:59,723 [INFO]   [1395.2s - 1398.9s] [en] Where is the file? Yeah?
+2026-04-22 22:29:59,723 [INFO]   [1404.6s - 1405.4s] [en] Show me the bags.
+2026-04-22 22:30:14,828 [INFO]   [472.2s - 501.0s] [en] Oh, don't ya? Who said on? Yeah? Who? What's your name? Okay, and we press A to 
+2026-04-22 22:30:23,601 [INFO]   [1407.9s - 1416.5s] [en] Look at this, okay?
+2026-04-22 22:30:23,602 [INFO]   [1417.1s - 1420.7s] [en] Cuda and Optix is available for NVIDIA cards.
+2026-04-22 22:30:23,603 [INFO]   [1423.7s - 1431.1s] [en] If you don't click on the unified colors over here, it doesn't bugs the material
+2026-04-22 22:30:23,603 [INFO]   [1432.0s - 1434.0s] [en] Select, okay?
+2026-04-22 22:30:23,603 [INFO]   [1434.6s - 1449.0s] [en] So I guess for people who got black babies is because you didn't click on the ba
+2026-04-22 22:30:23,603 [INFO]   [1453.9s - 1456.2s] [en] Make sure before you bugs, okay?
+2026-04-22 22:30:34,413 [INFO]   [504.1s - 552.0s] [en] Now, if you don't see the UV editor over here, click on this button, little butt
+2026-04-22 22:30:47,615 [INFO]   [1456.2s - 1459.0s] [en] So this unified bag color is selected.
+2026-04-22 22:30:47,616 [INFO]   [1476.5s - 1481.2s] [en] If it's black, just click on the material again and click bugs again.
+2026-04-22 22:30:47,616 [INFO]   [1487.1s - 1487.3s] [en] Bugs.
+2026-04-22 22:30:47,616 [INFO]   [1493.7s - 1497.1s] [en] I have to open up this again because I cancel middle way.
+2026-04-22 22:30:47,616 [INFO]   [1617.5s - 1618.4s] [en] Just a minute, hey?
+2026-04-22 22:30:47,617 [INFO]   [1634.2s - 1635.2s] [en] You select the UV.
+2026-04-22 22:30:47,617 [INFO]   [1667.7s - 1760.1s] [en] Okay, so going back to this, make sure you select all of the material slots with
+2026-04-22 22:30:58,742 [INFO]   [553.7s - 570.7s] [en] Click on it, and you're going to see it try to scale up all of the islands over 
+2026-04-22 22:31:15,612 [INFO]   [570.7s - 598.2s] [en] And then we're going to click on Pack Islands, alright, before click on Pack, ma
+2026-04-22 22:31:32,548 [INFO]   [598.2s - 628.9s] [en] If you set it too low, when you put the texture on it, maybe it's overlapping an
+2026-04-22 22:31:52,704 [INFO]   [639.5s - 654.6s] [en] Because the Smart UV is going to do all the scene again, and this model actually
+2026-04-22 22:31:52,705 [INFO]   [658.5s - 664.6s] [en] So what you get in DMS1 is using Smart UV to UV and wrap the whole object, is th
+2026-04-22 22:32:10,555 [INFO]   [665.4s - 704.5s] [en] Smart UV is not very smart, because let me tell you, let's do Smart UV, you see 
+2026-04-22 22:32:32,063 [INFO]   [705.1s - 727.8s] [en] Because when you use Smart UV, the algorithm will try to be smart by trying to d
+2026-04-22 22:32:32,064 [INFO]   [728.6s - 738.6s] [en] And the model you see, anyone learn about scene in DMS1, like mark scene for 3D 
+2026-04-22 22:32:52,034 [INFO]   [739.8s - 746.3s] [en] Oh my god, what's going on?
+2026-04-22 22:32:52,035 [INFO]   [747.7s - 762.8s] [en] So let me just show you, let me just pack the island first, before doing this, s
+2026-04-22 22:32:52,036 [INFO]   [764.0s - 781.5s] [en] Before doing this, I have to go to the object data property and go into UV map, 
+2026-04-22 22:33:10,416 [INFO]   [782.3s - 796.7s] [en] Alright, I need to go into object data property, which is this little button ove
+2026-04-22 22:33:10,418 [INFO]   [797.5s - 814.5s] [en] And I'm going to call this back, alright, and make sure you select this new UV m
+2026-04-22 22:33:29,328 [INFO]   [814.5s - 832.1s] [en] And just to answer your questions, why Smart UV unwrapping is not working, is be
+2026-04-22 22:33:29,329 [INFO]   [833.1s - 840.8s] [en] So seam is basically, think about it as, this is what is called seam, okay?
+2026-04-22 22:33:45,652 [INFO]   [840.8s - 863.5s] [en] So when you unwrap an object in 3D, think about it as a pattern that is being la
+2026-04-22 22:34:08,547 [INFO]   [863.5s - 880.0s] [en] For example, I have a texture over here, and you see that the texture over here 
+2026-04-22 22:34:08,548 [INFO]   [880.5s - 886.4s] [en] But around this area, you're going to see that it discontinue, because there's a
+2026-04-22 22:34:08,549 [INFO]   [888.6s - 898.7s] [en] So when you use Smart UV unwrap, it's not very smart because it's trying to do i
+2026-04-22 22:34:24,317 [INFO]   [901.5s - 920.7s] [en] So it's good only for texture that is mostly procedural, but with texture that h
+2026-04-22 22:34:46,207 [INFO]   [923.6s - 936.6s] [en] Unfortunately, I won't have the time to explain before this course was about 3D 
+2026-04-22 22:34:46,209 [INFO]   [938.3s - 951.6s] [en] But bear with me, okay? Just remember that you need to learn how to mark seams t
+2026-04-22 22:34:46,209 [INFO]   [952.1s - 955.7s] [en] Limit your use of Smart UV, okay?
+2026-04-22 22:35:06,346 [INFO]   [955.9s - 967.5s] [en] Now, going back to the lectures, so you have this object over here with the char
+2026-04-22 22:35:06,347 [INFO]   [967.5s - 976.8s] [en] And make sure you are on the bug UV map, okay? Bug UV map over here.
+2026-04-22 22:35:06,347 [INFO]   [978.5s - 995.1s] [en] And this button is still on for the UV map on top, UV average island scale and U
+2026-04-22 22:35:26,143 [INFO]   [1012.6s - 1022.4s] [en] So you have a new UV map that is ready to bug, okay?
+2026-04-22 22:35:26,144 [INFO]   [1023.2s - 1031.3s] [en] Why you need a new UV map is because the old UV map over here, you're going to s
+2026-04-22 22:35:26,145 [INFO]   [1032.1s - 1040.8s] [en] So we cannot bug using this UV map, and we have to create a new UV map for buggi
+2026-04-22 22:35:45,483 [INFO]   [1041.3s - 1046.0s] [en] And when you have this selected, okay?
+2026-04-22 22:35:45,484 [INFO]   [1047.3s - 1064.0s] [en] And then you make sure that all of the material over here, you click on the unif
+2026-04-22 22:35:45,485 [INFO]   [1065.6s - 1080.9s] [en] Make sure that you select it, this material over here, and then you go into rend
+2026-04-22 22:36:04,904 [INFO]   [1085.4s - 1098.7s] [en] Make sure the render engine is cycle, and you go down to bugs, okay?
+2026-04-22 22:36:04,904 [INFO]   [1103.6s - 1116.0s] [en] And the bug type over here, you're going to choose diffuse, alright?
+2026-04-22 22:36:04,905 [INFO]   [1117.0s - 1124.2s] [en] Diffuse is another name for color maps. Are you following along? Yeah?
+2026-04-22 22:36:04,905 [INFO]   [1127.3s - 1133.4s] [en] Diffuse, okay? Uncheck direct and indirect, okay?
+2026-04-22 22:36:25,480 [INFO]   [1133.4s - 1139.7s] [en] Because this is basically how lighting is going to bounce on the objects.
+2026-04-22 22:36:25,480 [INFO]   [1140.4s - 1148.0s] [en] And to bug or to convert all the texture into a unified texture, we don't need l
+2026-04-22 22:36:25,481 [INFO]   [1148.8s - 1151.7s] [en] So uncheck direct and indirect, alright?
+2026-04-22 22:36:25,482 [INFO]   [1165.1s - 1169.8s] [en] And then size over here, we're going to leave it as 8 instead of 16.
+2026-04-22 22:36:25,482 [INFO]   [1170.4s - 1176.5s] [en] It's basically the margin between the islands over here, alright?
+2026-04-22 22:36:45,468 [INFO]   [1176.5s - 1193.3s] [en] And then we're going to click on bugs, and you're going to see a little loading 
+2026-04-22 22:36:45,469 [INFO]   [1193.6s - 1204.1s] [en] It's basically bugging all of the separate texture in each of the objects over h
+2026-04-22 22:36:45,470 [INFO]   [1206.2s - 1217.9s] [en] And let's wait for it. Oh, don't go. You follow along.
+2026-04-22 22:37:06,224 [INFO]   [1219.1s - 1224.5s] [en] Hello. Ming, help the students.
+2026-04-22 22:37:06,225 [INFO]   [1285.9s - 1304.6s] [en] Select every map. Where's the bag?
+2026-04-22 22:37:06,225 [INFO]   [1316.8s - 1320.2s] [en] Every object, every material.
+2026-04-22 22:37:06,225 [INFO]   [1358.5s - 1359.8s] [en] Show me the notes.
+2026-04-22 22:37:06,226 [INFO]   [1370.1s - 1373.1s] [en] I think you missed some of the spots.
+2026-04-22 22:37:06,226 [INFO]   [1375.2s - 1377.0s] [en] Show me all the material.
+2026-04-22 22:37:06,226 [INFO]   [1388.6s - 1389.1s] [en] The bag.
+2026-04-22 22:37:06,227 [INFO]   [1395.2s - 1398.9s] [en] Where is the file? Yeah?
+2026-04-22 22:37:06,227 [INFO]   [1404.6s - 1405.4s] [en] Show me the bags.
+2026-04-22 22:37:28,518 [INFO]   [1407.9s - 1416.5s] [en] Look at this, okay?
+2026-04-22 22:37:28,519 [INFO]   [1417.1s - 1420.7s] [en] Cuda and Optix is available for NVIDIA cards.
+2026-04-22 22:37:28,520 [INFO]   [1423.7s - 1431.1s] [en] If you don't click on the unified colors over here, it doesn't bugs the material
+2026-04-22 22:37:28,520 [INFO]   [1432.0s - 1434.0s] [en] Select, okay?
+2026-04-22 22:37:28,521 [INFO]   [1434.6s - 1449.0s] [en] So I guess for people who got black babies is because you didn't click on the ba
+2026-04-22 22:37:28,521 [INFO]   [1453.9s - 1456.2s] [en] Make sure before you bugs, okay?
+2026-04-22 22:37:51,612 [INFO]   [1456.2s - 1459.0s] [en] So this unified bag color is selected.
+2026-04-22 22:37:51,612 [INFO]   [1476.5s - 1481.2s] [en] If it's black, just click on the material again and click bugs again.
+2026-04-22 22:37:51,613 [INFO]   [1487.1s - 1487.3s] [en] Bugs.
+2026-04-22 22:37:51,613 [INFO]   [1493.7s - 1497.1s] [en] I have to open up this again because I cancel middle way.
+2026-04-22 22:37:51,614 [INFO]   [1617.5s - 1618.4s] [en] Just a minute, hey?
+2026-04-22 22:37:51,614 [INFO]   [1634.2s - 1635.2s] [en] You select the UV.
+2026-04-22 22:37:51,615 [INFO]   [1667.7s - 1760.1s] [en] Okay, so going back to this, make sure you select all of the material slots with
+2026-04-22 22:38:11,349 [INFO]   [1761.0s - 1762.9s] [en] Bag texture over here.
+2026-04-22 22:38:11,350 [INFO]   [1763.8s - 1771.5s] [en] Select the base body and make sure the bag UV map is selected, alright?
+2026-04-22 22:38:11,350 [INFO]   [1779.4s - 1784.4s] [en] I'm going to turn on the Cuda over here just to make things a little bit faster.
+2026-04-22 22:38:11,351 [INFO]   [1785.4s - 1791.4s] [en] So for the render engine is Cycle and device is GPU, okay?
+2026-04-22 22:38:11,351 [INFO]   [1793.8s - 1796.8s] [en] And then click on Bugs.
+2026-04-22 22:38:31,370 [INFO]   [1828.7s - 1833.8s] [en] Because every time the bugging processes, you bug.
+2026-04-22 22:38:31,371 [INFO]   [2214.9s - 2217.7s] [en] When you see bug face, alright?
+2026-04-22 22:38:31,372 [INFO]   [2218.0s - 2234.0s] [en] It's because the bug material, the bug image is not copied to the base body mate
+2026-04-22 22:38:31,373 [INFO]   [2234.3s - 2248.5s] [en] So make sure that before you bug, you make sure that all of the material over he
+2026-04-22 22:38:54,234 [INFO]   [2248.5s - 2252.0s] [en] And it's inside of those nodes, okay?
+2026-04-22 22:38:54,236 [INFO]   [2254.0s - 2268.2s] [en] Because this is you telling Blender that, hey, we want to bug the color informat
+2026-04-22 22:38:54,236 [INFO]   [2268.6s - 2271.3s] [en] So you need to select them all together.
+2026-04-22 22:38:54,237 [INFO]   [2379.0s - 2382.3s] [en] Ming, see if anyone needs help.
+2026-04-22 22:38:54,237 [INFO]   [2473.2s - 2475.4s] [en] Anyone not done, raise your hand.
+2026-04-22 22:38:54,237 [INFO]   [2478.6s - 2478.9s] [en] Who done?
+2026-04-22 22:38:54,238 [INFO]   [2480.8s - 2481.1s] [en] Done.
+2026-04-22 22:39:26,983 [INFO]   [2482.1s - 2482.8s] [en] Done.
+2026-04-22 22:39:26,984 [INFO]   [2484.4s - 2486.4s] [en] Make sure display correctly, yes.
+2026-04-22 22:39:26,984 [INFO]   [2487.5s - 2488.3s] [en] What about this?
+2026-04-22 22:39:26,984 [INFO]   [2496.2s - 2499.3s] [en] Slap it, I said a lot last time.
+2026-04-22 22:39:26,985 [INFO]   [2507.1s - 2508.5s] [en] Sometimes it give you an error.
+2026-04-22 22:39:26,985 [INFO]   [2509.4s - 2510.7s] [en] Click again on this.
+2026-04-22 22:39:26,985 [INFO]   [2517.2s - 2518.1s] [en] White color now is black.
+2026-04-22 22:39:26,986 [INFO]   [2520.8s - 2528.6s] [en] So only way you can do, maybe this file is error, has an error.
+2026-04-22 22:39:26,986 [INFO]   [2530.3s - 2538.3s] [en] So the last time.
+2026-04-22 22:39:26,987 [INFO]   [2543.9s - 2545.5s] [en] Now, who finished?
+2026-04-22 22:39:26,987 [INFO]   [2547.8s - 2565.6s] [en] We correctly.
+2026-04-22 22:39:26,987 [INFO]   [2575.8s - 2576.3s] [en] It's cool, huh?
+2026-04-22 22:39:26,987 [INFO]   [2612.8s - 2613.5s] [en] White color.
+2026-04-22 22:39:26,988 [INFO]   [2699.0s - 2700.2s] [en] Now who can do it?
+2026-04-22 22:39:26,988 [INFO]   [2700.6s - 2701.9s] [en] Raise your hand, I'll help you.
+2026-04-22 22:39:26,988 [INFO]   [2705.2s - 2706.4s] [en] Hello, all good?
+2026-04-22 22:39:56,097 [INFO]   [2709.6s - 2710.7s] [en] Okay, now.
+2026-04-22 22:39:56,098 [INFO]   [2711.8s - 2719.4s] [en] After you done with backing, you should have one unified texture for the charact
+2026-04-22 22:39:56,098 [INFO]   [2720.2s - 2723.4s] [en] And you going into this little buttons over here.
+2026-04-22 22:39:56,099 [INFO]   [2725.1s - 2725.6s] [en] Image.
+2026-04-22 22:39:56,099 [INFO]   [2727.9s - 2728.1s] [en] Save.
+2026-04-22 22:39:56,100 [INFO]   [2735.7s - 2736.8s] [en] Save or save as.
+2026-04-22 22:39:56,100 [INFO]   [2736.9s - 2737.5s] [en] It's the same.
+2026-04-22 22:39:56,100 [INFO]   [2738.0s - 2738.5s] [en] All right.
+2026-04-22 22:39:56,101 [INFO]   [2739.4s - 2739.8s] [en] Save.
+2026-04-22 22:39:56,101 [INFO]   [2740.8s - 2745.8s] [en] And put it into a folder.
+2026-04-22 22:39:56,101 [INFO]   [2746.1s - 2746.9s] [en] Save as image.
+2026-04-22 22:39:56,102 [INFO]   [2749.7s - 2750.1s] [en] Okay.
+2026-04-22 22:39:56,102 [INFO]   [2751.7s - 2753.8s] [en] And now we're going to set the file as well.
+2026-04-22 22:39:56,103 [INFO]   [2754.3s - 2754.7s] [en] Save.
+2026-04-22 22:39:56,103 [INFO]   [2760.8s - 2761.9s] [en] And then file.
+2026-04-22 22:39:56,103 [INFO]   [2763.4s - 2763.8s] [en] Okay.
+2026-04-22 22:40:20,410 [INFO]   [2763.8s - 2771.5s] [en] After work, you should have one file that you have exported out.
+2026-04-22 22:40:20,410 [INFO]   [2773.2s - 2775.7s] [en] Unified black color should look something like this.
+2026-04-22 22:40:20,411 [INFO]   [2776.7s - 2777.2s] [en] All right.
+2026-04-22 22:40:20,411 [INFO]   [2783.6s - 2783.9s] [en] Oh, yeah.
+2026-04-22 22:40:20,411 [INFO]   [2785.6s - 2786.6s] [en] You have this file.
+2026-04-22 22:40:20,411 [INFO]   [2787.0s - 2787.5s] [en] Yeah.
+2026-04-22 22:40:20,411 [INFO]   [2788.3s - 2788.5s] [en] Cool.
+2026-04-22 22:40:20,412 [INFO]   [2789.4s - 2797.3s] [en] Now, we're going to export the geometry of this character out of Blender.
+2026-04-22 22:40:20,412 [INFO]   [2798.3s - 2798.6s] [en] Okay.
+2026-04-22 22:40:20,412 [INFO]   [2799.8s - 2802.4s] [en] And we do that by going into file.
+2026-04-22 22:40:41,278 [INFO]   [2804.4s - 2809.1s] [en] File, export.
+2026-04-22 22:40:41,279 [INFO]   [2813.2s - 2815.0s] [en] And we go for OBJ.
+2026-04-22 22:40:41,280 [INFO]   [2831.2s - 2833.6s] [en] Make sure you select the base body over here.
+2026-04-22 22:40:41,280 [INFO]   [2835.7s - 2836.4s] [en] OBJ.
+2026-04-22 22:40:41,280 [INFO]   [2840.2s - 2843.7s] [en] And then we click on include selection only.
+2026-04-22 22:40:41,280 [INFO]   [2849.7s - 2850.2s] [en] Okay.
+2026-04-22 22:40:41,281 [INFO]   [2850.6s - 2857.3s] [en] Which means that it's going to only export out the base body mesh that we are cl
+2026-04-22 22:40:41,281 [INFO]   [2857.3s - 2857.8s] [en] on.
+2026-04-22 22:40:41,281 [INFO]   [2858.2s - 2858.9s] [en] We are selecting.
+2026-04-22 22:41:07,646 [INFO]   [2858.9s - 2864.1s] [en] Because without this button, it's going to export also the camera, the cube, the
+2026-04-22 22:41:07,647 [INFO]   [2864.1s - 2866.1s] [en] over here, which we don't need in tech designer.
+2026-04-22 22:41:07,647 [INFO]   [2866.9s - 2867.2s] [en] Oh, yeah.
+2026-04-22 22:41:07,647 [INFO]   [2868.3s - 2870.0s] [en] So remember to click on this button.
+2026-04-22 22:41:07,647 [INFO]   [2872.6s - 2873.2s] [en] All right.
+2026-04-22 22:41:07,648 [INFO]   [2873.9s - 2878.3s] [en] And two button that is very important, apply modifiers, apply transform.
+2026-04-22 22:41:07,648 [INFO]   [2879.1s - 2882.1s] [en] Make sure these two are selected.
+2026-04-22 22:41:07,649 [INFO]   [2883.2s - 2885.7s] [en] And of course, UV coordinates and normal.
+2026-04-22 22:41:07,649 [INFO]   [2886.7s - 2887.3s] [en] All right.
+2026-04-22 22:41:07,650 [INFO]   [2889.0s - 2890.3s] [en] What does it mean, this button?
+2026-04-22 22:41:07,650 [INFO]   [2890.8s - 2891.9s] [en] Apply modifiers.
+2026-04-22 22:41:32,160 [INFO]   [2891.9s - 2898.1s] [en] It means that if you go into the modifier tab over here, you see that I have sub
+2026-04-22 22:41:32,161 [INFO]   [2898.1s - 2898.8s] [en] surface.
+2026-04-22 22:41:32,161 [INFO]   [2899.3s - 2899.7s] [en] Okay.
+2026-04-22 22:41:32,161 [INFO]   [2899.8s - 2900.6s] [en] Inside Blender.
+2026-04-22 22:41:32,162 [INFO]   [2901.3s - 2906.1s] [en] If I uncheck this button, it's just going to export the model as a low poly.
+2026-04-22 22:41:32,162 [INFO]   [2906.9s - 2907.4s] [en] Okay.
+2026-04-22 22:41:32,163 [INFO]   [2908.2s - 2913.7s] [en] But if I check this button, it's going to export with two level of subdiv.
+2026-04-22 22:41:32,164 [INFO]   [2914.9s - 2915.2s] [en] Yeah.
+2026-04-22 22:41:32,164 [INFO]   [2916.2s - 2918.1s] [en] So make sure you check on this.
+2026-04-22 22:41:32,164 [INFO]   [2922.2s - 2923.3s] [en] And material.
+2026-04-22 22:41:32,165 [INFO]   [2924.5s - 2925.8s] [en] Leave it as it is.
+2026-04-22 22:41:53,952 [INFO]   [2925.8s - 2926.6s] [en] Okay.
+2026-04-22 22:41:53,952 [INFO]   [2928.6s - 2933.9s] [en] Export Wavefront OBJ into download folder.
+2026-04-22 22:41:53,952 [INFO]   [2938.1s - 2938.3s] [en] Okay.
+2026-04-22 22:41:53,953 [INFO]   [2938.5s - 2939.8s] [en] File exported successfully.
+2026-04-22 22:41:53,953 [INFO]   [2941.4s - 2944.1s] [en] We can go into tech designer over here.
+2026-04-22 22:41:53,954 [INFO]   [2946.6s - 2950.5s] [en] And how to import a file, 3D file into tech designer.
+2026-04-22 22:41:53,954 [INFO]   [2950.8s - 2951.3s] [en] Have you learned?
+2026-04-22 22:41:53,955 [INFO]   [2955.2s - 2957.9s] [en] Have you learned how to import 3D files into tech designer?
+2026-04-22 22:41:53,955 [INFO]   [2960.3s - 2962.6s] [en] In week four, did you learn that?
+2026-04-22 22:41:53,956 [INFO]   [2972.5s - 2973.2s] [en] Which are on?
+2026-04-22 22:41:53,956 [INFO]   [2975.6s - 2975.9s] [en] Huh?
+2026-04-22 22:42:21,598 [INFO]   [2977.5s - 2983.0s] [en] Now, two way you can import a 3D asset into tech designer.
+2026-04-22 22:42:21,599 [INFO]   [2984.1s - 2986.7s] [en] You can either drag and drop it directly.
+2026-04-22 22:42:21,599 [INFO]   [2988.7s - 2988.9s] [en] Okay.
+2026-04-22 22:42:21,599 [INFO]   [2989.5s - 2991.6s] [en] It's going to be this file over here.
+2026-04-22 22:42:21,600 [INFO]   [2992.3s - 2996.3s] [en] Lab 10 slash one.
+2026-04-22 22:42:21,600 [INFO]   [2996.6s - 2997.0s] [en] Okay.
+2026-04-22 22:42:21,600 [INFO]   [2997.3s - 3000.7s] [en] And you see it's already recognized as an asset in tech designer.
+2026-04-22 22:42:21,600 [INFO]   [3001.8s - 3002.5s] [en] All right.
+2026-04-22 22:42:21,601 [INFO]   [3003.3s - 3004.4s] [en] Drag and drop it.
+2026-04-22 22:42:21,601 [INFO]   [3005.6s - 3007.4s] [en] And you're going to see that it's imported.
+2026-04-22 22:42:21,601 [INFO]   [3008.0s - 3008.4s] [en] Easy.
+2026-04-22 22:42:21,601 [INFO]   [3009.0s - 3009.8s] [en] As a pop.
+2026-04-22 22:42:21,602 [INFO]   [3010.1s - 3011.0s] [en] P-O-P.
+2026-04-22 22:42:21,602 [INFO]   [3012.3s - 3012.8s] [en] P-O-P.
+2026-04-22 22:42:21,602 [INFO]   [3013.1s - 3013.4s] [en] Pop.
+2026-04-22 22:42:21,602 [INFO]   [3014.9s - 3015.3s] [en] All right.
+2026-04-22 22:42:45,872 [INFO]   [3015.3s - 3019.7s] [en] Or you go into pop operator.
+2026-04-22 22:42:45,872 [INFO]   [3020.6s - 3021.3s] [en] File in.
+2026-04-22 22:42:45,873 [INFO]   [3024.4s - 3025.3s] [en] File in.
+2026-04-22 22:42:45,873 [INFO]   [3028.1s - 3028.3s] [en] Okay.
+2026-04-22 22:42:45,873 [INFO]   [3028.7s - 3036.0s] [en] And the description here you see that it imports OBJ PLI.
+2026-04-22 22:42:45,873 [INFO]   [3037.2s - 3037.4s] [en] Okay.
+2026-04-22 22:42:45,874 [INFO]   [3037.4s - 3042.9s] [en] These are the file format that you can export from Blender.
+2026-04-22 22:42:45,874 [INFO]   [3043.2s - 3043.5s] [en] Okay.
+2026-04-22 22:42:45,874 [INFO]   [3043.6s - 3044.7s] [en] OBJ is just one of them.
+2026-04-22 22:42:45,875 [INFO]   [3045.6s - 3046.3s] [en] File in.
+2026-04-22 22:42:45,875 [INFO]   [3047.8s - 3048.7s] [en] Click on this.
+2026-04-22 22:42:45,876 [INFO]   [3049.7s - 3052.0s] [en] And then you click on geometry files.
+2026-04-22 22:42:45,876 [INFO]   [3054.4s - 3057.0s] [en] Click on this plus button.
+2026-04-22 22:43:14,912 [INFO]   [3057.0s - 3062.7s] [en] And you'll be able to select the files.
+2026-04-22 22:43:14,913 [INFO]   [3064.8s - 3065.7s] [en] Click on open.
+2026-04-22 22:43:14,913 [INFO]   [3066.7s - 3067.6s] [en] And it's the same.
+2026-04-22 22:43:14,913 [INFO]   [3070.2s - 3072.0s] [en] And you click on the lab 10 over here.
+2026-04-22 22:43:14,914 [INFO]   [3072.4s - 3073.2s] [en] It's file in.
+2026-04-22 22:43:14,914 [INFO]   [3073.2s - 3074.7s] [en] This one is file in as well.
+2026-04-22 22:43:14,915 [INFO]   [3077.1s - 3077.3s] [en] Yeah.
+2026-04-22 22:43:14,915 [INFO]   [3078.9s - 3079.2s] [en] Okay.
+2026-04-22 22:43:14,915 [INFO]   [3079.2s - 3080.8s] [en] I'm going to delete one of this.
+2026-04-22 22:43:14,916 [INFO]   [3084.1s - 3088.5s] [en] And then how to render this model out guys.
+2026-04-22 22:43:14,916 [INFO]   [3090.7s - 3091.1s] [en] Geo.
+2026-04-22 22:43:14,917 [INFO]   [3091.5s - 3092.6s] [en] I have a geo already.
+2026-04-22 22:43:14,917 [INFO]   [3094.9s - 3095.5s] [en] All right.
+2026-04-22 22:43:14,918 [INFO]   [3115.7s - 3117.9s] [en] And can connect this to this geo.
+2026-04-22 22:43:14,918 [INFO]   [3118.1s - 3119.6s] [en] So I'm going to delete this one.
+2026-04-22 22:43:14,919 [INFO]   [3120.0s - 3120.5s] [en] Okay.
+2026-04-22 22:43:41,890 [INFO]   [3120.5s - 3125.8s] [en] Now how to add a geo into this object.
+2026-04-22 22:43:41,890 [INFO]   [3126.8s - 3126.9s] [en] Guys.
+2026-04-22 22:43:41,890 [INFO]   [3128.6s - 3128.8s] [en] Huh?
+2026-04-22 22:43:41,890 [INFO]   [3129.0s - 3129.7s] [en] Right click.
+2026-04-22 22:43:41,891 [INFO]   [3132.2s - 3132.5s] [en] Okay.
+2026-04-22 22:43:41,891 [INFO]   [3132.6s - 3138.1s] [en] Hover the mouse in the middle of the notes over here.
+2026-04-22 22:43:41,891 [INFO]   [3138.2s - 3139.1s] [en] Right click.
+2026-04-22 22:43:41,891 [INFO]   [3140.0s - 3140.2s] [en] Comm.
+2026-04-22 22:43:41,892 [INFO]   [3141.8s - 3142.6s] [en] And geometry.
+2026-04-22 22:43:41,892 [INFO]   [3144.7s - 3145.2s] [en] All right.
+2026-04-22 22:43:41,893 [INFO]   [3145.5s - 3148.8s] [en] So it's geo one has been added.
+2026-04-22 22:43:41,893 [INFO]   [3150.3s - 3150.7s] [en] Okay.
+2026-04-22 22:43:41,893 [INFO]   [3151.9s - 3153.8s] [en] And then how to render this one out guys.
+2026-04-22 22:43:41,894 [INFO]   [3157.3s - 3157.8s] [en] Yes.
+2026-04-22 22:43:41,894 [INFO]   [3158.4s - 3160.0s] [en] We're going to add in.
+2026-04-22 22:43:41,894 [INFO]   [3160.6s - 3161.0s] [en] Camera.
+2026-04-22 22:43:41,894 [INFO]   [3161.1s - 3162.1s] [en] Let's wait for it.
+2026-04-22 22:43:41,894 [INFO]   [3162.3s - 3162.6s] [en] Okay.
+2026-04-22 22:44:11,380 [INFO]   [3162.6s - 3164.4s] [en] We're going to add in a what?
+2026-04-22 22:44:11,380 [INFO]   [3166.1s - 3166.6s] [en] Render top.
+2026-04-22 22:44:11,380 [INFO]   [3167.3s - 3167.7s] [en] Okay.
+2026-04-22 22:44:11,380 [INFO]   [3173.2s - 3174.0s] [en] Render top.
+2026-04-22 22:44:11,381 [INFO]   [3175.0s - 3175.4s] [en] All right.
+2026-04-22 22:44:11,381 [INFO]   [3175.4s - 3177.3s] [en] And it's give us a arrow button.
+2026-04-22 22:44:11,381 [INFO]   [3178.3s - 3178.5s] [en] Okay.
+2026-04-22 22:44:11,382 [INFO]   [3178.6s - 3179.8s] [en] No camera confound.
+2026-04-22 22:44:11,382 [INFO]   [3180.6s - 3181.0s] [en] Okay.
+2026-04-22 22:44:11,382 [INFO]   [3183.7s - 3184.9s] [en] Normally what you do guys.
+2026-04-22 22:44:11,382 [INFO]   [3187.1s - 3188.8s] [en] You add a camera right.
+2026-04-22 22:44:11,383 [INFO]   [3191.5s - 3193.7s] [en] Today I'm going to show you another way.
+2026-04-22 22:44:11,383 [INFO]   [3194.9s - 3197.4s] [en] Which is easier to set up camera.
+2026-04-22 22:44:11,383 [INFO]   [3198.7s - 3199.2s] [en] Pay attention.
+2026-04-22 22:44:11,384 [INFO]   [3201.7s - 3203.9s] [en] We're going to divide the screen into two.
+2026-04-22 22:44:11,384 [INFO]   [3204.3s - 3205.1s] [en] Click on this button.
+2026-04-22 22:44:11,384 [INFO]   [3209.0s - 3209.8s] [en] Divide it.
+2026-04-22 22:44:11,384 [INFO]   [3210.9s - 3212.6s] [en] And on the right side over here.
+2026-04-22 22:44:36,148 [INFO]   [3212.9s - 3215.2s] [en] We're going to select panel.
+2026-04-22 22:44:36,149 [INFO]   [3219.1s - 3223.6s] [en] So this is the preview of the 3D files.
+2026-04-22 22:44:36,149 [INFO]   [3224.8s - 3225.1s] [en] Right.
+2026-04-22 22:44:36,149 [INFO]   [3226.8s - 3229.2s] [en] Normally speaking you will add a camera confound.
+2026-04-22 22:44:36,150 [INFO]   [3230.1s - 3232.3s] [en] But this time I'm going to show you another way.
+2026-04-22 22:44:36,150 [INFO]   [3233.7s - 3234.9s] [en] You open up palette.
+2026-04-22 22:44:36,150 [INFO]   [3237.4s - 3237.8s] [en] Okay.
+2026-04-22 22:44:36,151 [INFO]   [3239.8s - 3242.8s] [en] And in the palette over here under tools.
+2026-04-22 22:44:36,151 [INFO]   [3244.7s - 3249.0s] [en] You're going to find camera viewport.
+2026-04-22 22:44:36,153 [INFO]   [3251.6s - 3255.0s] [en] Drag and drop this component into top designer.
+2026-04-22 22:44:36,153 [INFO]   [3258.0s - 3258.4s] [en] Right.
+2026-04-22 22:44:36,153 [INFO]   [3259.4s - 3263.7s] [en] And make sure that in the render.
+2026-04-22 22:45:01,492 [INFO]   [3264.0s - 3264.8s] [en] Okay.
+2026-04-22 22:45:01,492 [INFO]   [3264.8s - 3268.1s] [en] Press P to open up the render.
+2026-04-22 22:45:01,493 [INFO]   [3269.7s - 3270.7s] [en] It's not cam1.
+2026-04-22 22:45:01,493 [INFO]   [3271.4s - 3274.2s] [en] But it's going to be camera viewport.
+2026-04-22 22:45:01,493 [INFO]   [3276.4s - 3278.0s] [en] So basically we tell top designer.
+2026-04-22 22:45:01,494 [INFO]   [3278.7s - 3279.7s] [en] This is my camera.
+2026-04-22 22:45:01,494 [INFO]   [3281.3s - 3282.9s] [en] It's not cam1 anymore.
+2026-04-22 22:45:01,494 [INFO]   [3287.3s - 3287.7s] [en] Okay.
+2026-04-22 22:45:01,494 [INFO]   [3287.7s - 3289.9s] [en] And you see a connection between the render.
+2026-04-22 22:45:01,495 [INFO]   [3291.2s - 3292.9s] [en] And the camera viewport over here.
+2026-04-22 22:45:01,495 [INFO]   [3295.9s - 3296.3s] [en] Right.
+2026-04-22 22:45:01,495 [INFO]   [3300.5s - 3303.2s] [en] And now connect the render to the out.
+2026-04-22 22:45:01,496 [INFO]   [3317.0s - 3320.0s] [en] And in the camera viewport over here.
+2026-04-22 22:45:01,496 [INFO]   [3320.0s - 3323.4s] [en] You're going to go into camera.
+2026-04-22 22:45:27,289 [INFO]   [3323.4s - 3329.2s] [en] And in the palette comp over here.
+2026-04-22 22:45:27,289 [INFO]   [3329.2s - 3330.7s] [en] Instead the render view.
+2026-04-22 22:45:27,290 [INFO]   [3331.1s - 3335.2s] [en] You're going to add another dot over here.
+2026-04-22 22:45:27,290 [INFO]   [3337.6s - 3338.2s] [en] Okay.
+2026-04-22 22:45:27,290 [INFO]   [3338.8s - 3339.5s] [en] So now.
+2026-04-22 22:45:27,291 [INFO]   [3340.0s - 3341.4s] [en] This is where the magic happens.
+2026-04-22 22:45:27,291 [INFO]   [3342.9s - 3345.7s] [en] You'll be able to rotate the 3D objects.
+2026-04-22 22:45:27,291 [INFO]   [3346.3s - 3348.0s] [en] Inside the panel views.
+2026-04-22 22:45:27,292 [INFO]   [3349.5s - 3349.8s] [en] Okay.
+2026-04-22 22:45:27,292 [INFO]   [3349.8s - 3351.4s] [en] And you'll be able to preview.
+2026-04-22 22:45:27,292 [INFO]   [3354.3s - 3356.4s] [en] You'll be able to set the camera easier.
+2026-04-22 22:45:27,292 [INFO]   [3357.3s - 3357.9s] [en] Okay.
+2026-04-22 22:45:27,293 [INFO]   [3358.7s - 3358.9s] [en] Hello.
+2026-04-22 22:45:27,293 [INFO]   [3361.4s - 3361.8s] [en] Hello.
+2026-04-22 22:45:27,293 [INFO]   [3363.8s - 3364.0s] [en] Yeah.
+2026-04-22 22:45:27,293 [INFO]   [3364.0s - 3365.4s] [en] Try to set up this camera.
+2026-04-22 22:45:52,493 [INFO]   [3365.4s - 3369.5s] [en] So it's easier for you to set up 3D camera inside designer.
+2026-04-22 22:45:52,493 [INFO]   [3378.1s - 3379.3s] [en] And then.
+2026-04-22 22:45:52,493 [INFO]   [3384.8s - 3386.8s] [en] If you click on keyboard over here.
+2026-04-22 22:45:52,494 [INFO]   [3388.3s - 3388.7s] [en] Alright.
+2026-04-22 22:45:52,494 [INFO]   [3388.9s - 3391.8s] [en] You turn on WASD key active.
+2026-04-22 22:45:52,495 [INFO]   [3393.2s - 3395.7s] [en] You'll be able to zoom in and zoom out.
+2026-04-22 22:45:52,495 [INFO]   [3395.9s - 3397.8s] [en] With the buttons on your keyboard.
+2026-04-22 22:45:52,495 [INFO]   [3435.8s - 3437.6s] [en] Let me save the file first.
+2026-04-22 22:45:52,496 [INFO]   [3442.2s - 3443.9s] [en] And if you click on reset camera.
+2026-04-22 22:45:52,496 [INFO]   [3444.0s - 3447.5s] [en] It's going to reset it to the default camera.
+2026-04-22 22:45:52,496 [INFO]   [3448.9s - 3449.2s] [en] Okay.
+2026-04-22 22:45:52,497 [INFO]   [3451.6s - 3453.7s] [en] And right click on the panel now.
+2026-04-22 22:46:19,345 [INFO]   [3453.7s - 3457.5s] [en] You'll be able to see the top view.
+2026-04-22 22:46:19,346 [INFO]   [3458.6s - 3459.6s] [en] Right view.
+2026-04-22 22:46:19,346 [INFO]   [3460.3s - 3461.2s] [en] Left view.
+2026-04-22 22:46:19,346 [INFO]   [3462.8s - 3463.5s] [en] Back view.
+2026-04-22 22:46:19,346 [INFO]   [3465.2s - 3466.1s] [en] Front view.
+2026-04-22 22:46:19,347 [INFO]   [3470.5s - 3470.8s] [en] Yeah.
+2026-04-22 22:46:19,347 [INFO]   [3471.2s - 3473.0s] [en] It's on the panel column over here.
+2026-04-22 22:46:19,347 [INFO]   [3473.9s - 3475.5s] [en] Just replace it with two dots.
+2026-04-22 22:46:19,348 [INFO]   [3476.6s - 3477.0s] [en] Alright.
+2026-04-22 22:46:19,348 [INFO]   [3482.3s - 3483.1s] [en] It's black.
+2026-04-22 22:46:19,348 [INFO]   [3483.2s - 3484.6s] [en] Check if you have the render.
+2026-04-22 22:46:19,349 [INFO]   [3485.4s - 3486.1s] [en] The camera.
+2026-04-22 22:46:19,349 [INFO]   [3486.1s - 3487.1s] [en] Camera viewport.
+2026-04-22 22:46:19,349 [INFO]   [3493.0s - 3494.6s] [en] The panel view right.
+2026-04-22 22:46:19,349 [INFO]   [3514.5s - 3514.9s] [en] Let me see.
+2026-04-22 22:46:19,350 [INFO]   [3557.1s - 3568.7s] [en] The end of all of the nodes should be the out top.
+2026-04-22 22:46:46,990 [INFO]   [3568.7s - 3598.1s] [en] If it doesn't work the first time.
+2026-04-22 22:46:46,991 [INFO]   [3598.6s - 3600.7s] [en] Let's close designer over here the second time.
+2026-04-22 22:46:46,991 [INFO]   [3601.9s - 3602.1s] [en] Okay.
+2026-04-22 22:46:46,991 [INFO]   [3606.5s - 3607.0s] [en] Okay.
+2026-04-22 22:46:46,991 [INFO]   [3665.1s - 3667.2s] [en] If the keyboard doesn't work the first time.
+2026-04-22 22:46:46,992 [INFO]   [3668.2s - 3669.0s] [en] Just open.
+2026-04-22 22:46:46,992 [INFO]   [3669.9s - 3670.0s] [en] Render.
+2026-04-22 22:46:46,992 [INFO]   [3670.5s - 3670.7s] [en] Sorry.
+2026-04-22 22:46:46,992 [INFO]   [3671.7s - 3673.1s] [en] Close designer.
+2026-04-22 22:46:46,992 [INFO]   [3715.9s - 3716.1s] [en] Okay.
+2026-04-22 22:46:46,993 [INFO]   [3716.1s - 3722.0s] [en] Now you can use the SISD key over here.
+2026-04-22 22:46:46,993 [INFO]   [3725.1s - 3727.2s] [en] To control zoom in and zoom out of the character.
+2026-04-22 22:46:46,993 [INFO]   [3727.3s - 3729.8s] [en] You can use the middle mouse button over here.
+2026-04-22 22:46:46,994 [INFO]   [3730.5s - 3732.3s] [en] To rotate around the characters.
+2026-04-22 22:46:46,994 [INFO]   [3732.9s - 3733.9s] [en] Can you do that now?
+2026-04-22 22:47:14,603 [INFO]   [3734.6s - 3735.8s] [en] Yes or no?
+2026-04-22 22:47:14,603 [INFO]   [3737.4s - 3737.8s] [en] Okay.
+2026-04-22 22:47:14,604 [INFO]   [3740.8s - 3741.5s] [en] Now next step.
+2026-04-22 22:47:14,604 [INFO]   [3741.8s - 3743.5s] [en] I want to set some lighting.
+2026-04-22 22:47:14,604 [INFO]   [3744.0s - 3744.7s] [en] For this character.
+2026-04-22 22:47:14,605 [INFO]   [3745.1s - 3746.5s] [en] How do I do that?
+2026-04-22 22:47:14,605 [INFO]   [3746.8s - 3747.2s] [en] Guys.
+2026-04-22 22:47:14,605 [INFO]   [3749.6s - 3749.7s] [en] Okay.
+2026-04-22 22:47:14,605 [INFO]   [3749.9s - 3750.1s] [en] Come.
+2026-04-22 22:47:14,606 [INFO]   [3751.6s - 3752.2s] [en] And light.
+2026-04-22 22:47:14,606 [INFO]   [3755.8s - 3757.6s] [en] I can add one light over here.
+2026-04-22 22:47:14,607 [INFO]   [3762.4s - 3767.2s] [en] And this becomes the character over here.
+2026-04-22 22:47:14,607 [INFO]   [3767.8s - 3768.2s] [en] Now.
+2026-04-22 22:47:14,607 [INFO]   [3768.5s - 3769.9s] [en] I will teach you.
+2026-04-22 22:47:14,607 [INFO]   [3770.8s - 3773.3s] [en] On how to use an HDRI.
+2026-04-22 22:47:14,608 [INFO]   [3774.2s - 3775.8s] [en] Or environmental map.
+2026-04-22 22:47:14,608 [INFO]   [3776.9s - 3781.8s] [en] To achieve realistic rendering in tech designer.
+2026-04-22 22:47:40,303 [INFO]   [3782.4s - 3784.7s] [en] What is an HDRI in Blender?
+2026-04-22 22:47:40,303 [INFO]   [3786.9s - 3789.5s] [en] What is environmental lighting in Blender?
+2026-04-22 22:47:40,304 [INFO]   [3790.6s - 3791.7s] [en] Have you learned about it?
+2026-04-22 22:47:40,304 [INFO]   [3795.1s - 3795.7s] [en] HDRI.
+2026-04-22 22:47:40,304 [INFO]   [3796.9s - 3797.9s] [en] What is it?
+2026-04-22 22:47:40,304 [INFO]   [3809.7s - 3810.0s] [en] Yeah.
+2026-04-22 22:47:40,304 [INFO]   [3810.3s - 3812.3s] [en] 360 degree camera.
+2026-04-22 22:47:40,305 [INFO]   [3815.4s - 3817.0s] [en] And in tech designer.
+2026-04-22 22:47:40,305 [INFO]   [3817.1s - 3821.2s] [en] You can access the same kind of environmental lightings.
+2026-04-22 22:47:40,305 [INFO]   [3821.9s - 3825.0s] [en] By going to com and environmental light.
+2026-04-22 22:47:40,305 [INFO]   [3828.7s - 3829.1s] [en] Okay.
+2026-04-22 22:47:40,307 [INFO]   [3829.9s - 3831.6s] [en] And this give you an arrow over here.
+2026-04-22 22:47:40,307 [INFO]   [3831.7s - 3833.1s] [en] Because this require.
+2026-04-22 22:47:40,307 [INFO]   [3834.2s - 3835.5s] [en] An HDMI map.
+2026-04-22 22:48:09,548 [INFO]   [3835.5s - 3837.4s] [en] HDMI map.
+2026-04-22 22:48:09,548 [INFO]   [3840.3s - 3840.9s] [en] And.
+2026-04-22 22:48:09,549 [INFO]   [3841.5s - 3843.1s] [en] We can use.
+2026-04-22 22:48:09,549 [INFO]   [3843.9s - 3844.2s] [en] File in.
+2026-04-22 22:48:09,549 [INFO]   [3846.1s - 3846.3s] [en] Sorry.
+2026-04-22 22:48:09,550 [INFO]   [3846.7s - 3847.4s] [en] Movie in.
+2026-04-22 22:48:09,550 [INFO]   [3849.1s - 3849.3s] [en] Top.
+2026-04-22 22:48:09,550 [INFO]   [3850.7s - 3851.8s] [en] Movie file in top.
+2026-04-22 22:48:09,550 [INFO]   [3853.3s - 3853.7s] [en] Okay.
+2026-04-22 22:48:09,551 [INFO]   [3859.8s - 3861.6s] [en] And then if we open up.
+2026-04-22 22:48:09,551 [INFO]   [3862.6s - 3864.0s] [en] The file over here.
+2026-04-22 22:48:09,551 [INFO]   [3864.4s - 3866.6s] [en] Inside of tech designer root folder.
+2026-04-22 22:48:09,552 [INFO]   [3866.8s - 3867.7s] [en] You gonna see.
+2026-04-22 22:48:09,552 [INFO]   [3869.6s - 3871.6s] [en] An HDRI over here.
+2026-04-22 22:48:09,552 [INFO]   [3871.9s - 3872.8s] [en] Cloudy oceans.
+2026-04-22 22:48:09,552 [INFO]   [3873.1s - 3873.8s] [en] 2k.
+2026-04-22 22:48:09,552 [INFO]   [3875.3s - 3876.2s] [en] Click on it.
+2026-04-22 22:48:09,552 [INFO]   [3877.0s - 3877.4s] [en] Open.
+2026-04-22 22:48:09,553 [INFO]   [3879.6s - 3881.2s] [en] And drag and drop it.
+2026-04-22 22:48:09,553 [INFO]   [3881.2s - 3883.6s] [en] To the environmental map over here.
+2026-04-22 22:48:32,679 [INFO]   [3884.9s - 3886.2s] [en] Environmental map.
+2026-04-22 22:48:32,680 [INFO]   [3890.9s - 3892.9s] [en] You see nothing change.
+2026-04-22 22:48:32,680 [INFO]   [3893.6s - 3893.9s] [en] Okay.
+2026-04-22 22:48:32,680 [INFO]   [3894.9s - 3898.5s] [en] Because we need to add in the material as well.
+2026-04-22 22:48:32,681 [INFO]   [3899.7s - 3902.9s] [en] So I'm going to add in a PBR material.
+2026-04-22 22:48:32,681 [INFO]   [3904.8s - 3907.5s] [en] PBR is physical base rendering.
+2026-04-22 22:48:32,681 [INFO]   [3909.3s - 3909.6s] [en] Okay.
+2026-04-22 22:48:32,682 [INFO]   [3910.6s - 3914.9s] [en] And drag the PBR into the geometry.
+2026-04-22 22:48:32,682 [INFO]   [3917.8s - 3919.0s] [en] To set the material.
+2026-04-22 22:48:32,683 [INFO]   [3921.0s - 3921.4s] [en] Okay.
+2026-04-22 22:48:32,683 [INFO]   [3924.1s - 3924.8s] [en] And now.
+2026-04-22 22:48:32,683 [INFO]   [3925.5s - 3927.8s] [en] If I go into the PBR over here.
+2026-04-22 22:48:59,647 [INFO]   [3928.1s - 3930.6s] [en] You gonna see that it's very similar.
+2026-04-22 22:48:59,648 [INFO]   [3930.6s - 3934.1s] [en] To the PBR in blender.
+2026-04-22 22:48:59,648 [INFO]   [3934.3s - 3935.6s] [en] Principle BSDF.
+2026-04-22 22:48:59,648 [INFO]   [3937.0s - 3937.2s] [en] Alright.
+2026-04-22 22:48:59,648 [INFO]   [3939.3s - 3940.9s] [en] It has metallic roughness.
+2026-04-22 22:48:59,649 [INFO]   [3941.0s - 3941.5s] [en] Alpha.
+2026-04-22 22:48:59,649 [INFO]   [3941.6s - 3942.2s] [en] Normal.
+2026-04-22 22:48:59,649 [INFO]   [3942.5s - 3942.9s] [en] Etc.
+2026-04-22 22:48:59,649 [INFO]   [3943.9s - 3944.3s] [en] Okay.
+2026-04-22 22:48:59,650 [INFO]   [3947.6s - 3950.3s] [en] And if I reduce the metallic over here.
+2026-04-22 22:48:59,650 [INFO]   [3952.2s - 3954.2s] [en] And the roughness over here.
+2026-04-22 22:48:59,651 [INFO]   [3970.9s - 3973.3s] [en] And reduce the ambient occlusion over here.
+2026-04-22 22:48:59,651 [INFO]   [3973.3s - 3974.4s] [en] You gonna see that.
+2026-04-22 22:48:59,651 [INFO]   [3975.7s - 3978.7s] [en] The lighting of this character over here.
+2026-04-22 22:48:59,652 [INFO]   [3978.7s - 3981.6s] [en] Is actually influenced by the.
+2026-04-22 22:49:25,971 [INFO]   [3982.6s - 3983.8s] [en] Texture.
+2026-04-22 22:49:25,972 [INFO]   [3984.9s - 3987.9s] [en] The environmental lighting of the texture over here.
+2026-04-22 22:49:25,972 [INFO]   [3989.2s - 3989.3s] [en] Alright.
+2026-04-22 22:49:25,973 [INFO]   [4002.3s - 4003.8s] [en] And if we zoom in.
+2026-04-22 22:49:25,973 [INFO]   [4006.2s - 4008.5s] [en] Into the characters over here.
+2026-04-22 22:49:25,973 [INFO]   [4008.6s - 4010.1s] [en] You gonna see the reflection.
+2026-04-22 22:49:25,974 [INFO]   [4011.5s - 4011.9s] [en] Of the.
+2026-04-22 22:49:25,974 [INFO]   [4013.2s - 4015.5s] [en] Of the environmental maps over here.
+2026-04-22 22:49:25,975 [INFO]   [4017.2s - 4018.2s] [en] All the clouds.
+2026-04-22 22:49:25,977 [INFO]   [4018.5s - 4019.3s] [en] And the sky.
+2026-04-22 22:49:25,977 [INFO]   [4021.5s - 4022.4s] [en] Just like in blender.
+2026-04-22 22:49:25,978 [INFO]   [4024.1s - 4024.3s] [en] Alright.
+2026-04-22 22:49:25,978 [INFO]   [4026.0s - 4026.5s] [en] Yeah.
+2026-04-22 22:49:25,978 [INFO]   [4035.0s - 4035.4s] [en] Yes.
+2026-04-22 22:49:25,978 [INFO]   [4104.8s - 4106.2s] [en] Just to show you.
+2026-04-22 22:49:25,978 [INFO]   [4106.9s - 4108.8s] [en] That you can set up the.
+2026-04-22 22:49:25,979 [INFO]   [4109.6s - 4110.8s] [en] HDRI map over here.
+2026-04-22 22:49:54,610 [INFO]   [4112.4s - 4114.4s] [en] But you can also select another.
+2026-04-22 22:49:54,611 [INFO]   [4115.0s - 4116.0s] [en] HDRI map.
+2026-04-22 22:49:54,611 [INFO]   [4116.1s - 4117.8s] [en] If you go into program file.
+2026-04-22 22:49:54,611 [INFO]   [4119.7s - 4121.5s] [en] And for example you have.
+2026-04-22 22:49:54,612 [INFO]   [4122.0s - 4124.4s] [en] A file that you can download from.
+2026-04-22 22:49:54,612 [INFO]   [4126.1s - 4127.0s] [en] HDRI heaven.
+2026-04-22 22:49:54,612 [INFO]   [4132.5s - 4134.2s] [en] So this website over here.
+2026-04-22 22:49:54,612 [INFO]   [4136.0s - 4138.4s] [en] Is going to give you a lot of HDRI.
+2026-04-22 22:49:54,613 [INFO]   [4139.5s - 4140.8s] [en] Depending on the scenes.
+2026-04-22 22:49:54,613 [INFO]   [4141.0s - 4142.1s] [en] You'll be able to pick up.
+2026-04-22 22:49:54,613 [INFO]   [4143.6s - 4143.9s] [en] Okay.
+2026-04-22 22:49:54,613 [INFO]   [4143.9s - 4145.6s] [en] I'm going to pick this one.
+2026-04-22 22:49:54,613 [INFO]   [4147.3s - 4149.2s] [en] And 1k is okay.
+2026-04-22 22:49:54,615 [INFO]   [4149.6s - 4151.5s] [en] I can just download this file.
+2026-04-22 22:49:54,615 [INFO]   [4154.8s - 4155.4s] [en] EXR.
+2026-04-22 22:50:20,419 [INFO]   [4156.0s - 4156.6s] [en] Okay.
+2026-04-22 22:50:20,420 [INFO]   [4157.5s - 4159.6s] [en] And I can drag and drop this one.
+2026-04-22 22:50:20,420 [INFO]   [4161.6s - 4162.9s] [en] To top designer.
+2026-04-22 22:50:20,421 [INFO]   [4165.0s - 4166.6s] [en] And replace it.
+2026-04-22 22:50:20,421 [INFO]   [4167.7s - 4169.8s] [en] In the environmental map over here.
+2026-04-22 22:50:20,421 [INFO]   [4170.5s - 4172.1s] [en] And we have another lighting.
+2026-04-22 22:50:20,421 [INFO]   [4172.9s - 4173.1s] [en] Okay.
+2026-04-22 22:50:20,422 [INFO]   [4173.3s - 4174.4s] [en] The pinkish.
+2026-04-22 22:50:20,422 [INFO]   [4175.0s - 4176.1s] [en] Environmental maps.
+2026-04-22 22:50:20,422 [INFO]   [4196.2s - 4198.2s] [en] And then next thing I want to show you.
+2026-04-22 22:50:20,422 [INFO]   [4199.0s - 4199.4s] [en] Okay.
+2026-04-22 22:50:20,423 [INFO]   [4199.5s - 4201.4s] [en] We have environmental map over here.
+2026-04-22 22:50:20,423 [INFO]   [4201.9s - 4204.0s] [en] How about the texture that we have back.
+2026-04-22 22:50:20,423 [INFO]   [4204.9s - 4206.6s] [en] In the previous step in blender.
+2026-04-22 22:50:20,423 [INFO]   [4207.4s - 4207.8s] [en] Okay.
+2026-04-22 22:50:20,423 [INFO]   [4210.2s - 4211.6s] [en] Just drag and drop.
+2026-04-22 22:50:50,073 [INFO]   [4211.9s - 4214.1s] [en] Unified bug colors over here.
+2026-04-22 22:50:50,074 [INFO]   [4220.6s - 4220.7s] [en] Okay.
+2026-04-22 22:50:50,074 [INFO]   [4220.7s - 4222.3s] [en] I will set this map into.
+2026-04-22 22:50:50,075 [INFO]   [4223.6s - 4225.0s] [en] The material over here.
+2026-04-22 22:50:50,075 [INFO]   [4225.1s - 4225.8s] [en] Have you learnt?
+2026-04-22 22:50:50,075 [INFO]   [4227.8s - 4228.5s] [en] No not yet.
+2026-04-22 22:50:50,075 [INFO]   [4230.4s - 4230.7s] [en] Okay.
+2026-04-22 22:50:50,075 [INFO]   [4231.5s - 4233.0s] [en] So in the material.
+2026-04-22 22:50:50,076 [INFO]   [4234.5s - 4235.1s] [en] PBR.
+2026-04-22 22:50:50,076 [INFO]   [4236.7s - 4237.6s] [en] This is the setting.
+2026-04-22 22:50:50,076 [INFO]   [4239.5s - 4240.1s] [en] Setting.
+2026-04-22 22:50:50,076 [INFO]   [4241.1s - 4241.4s] [en] Metalic.
+2026-04-22 22:50:50,077 [INFO]   [4241.9s - 4242.5s] [en] Roughness.
+2026-04-22 22:50:50,077 [INFO]   [4242.9s - 4244.1s] [en] Ambient occlusion etc.
+2026-04-22 22:50:50,078 [INFO]   [4245.0s - 4246.8s] [en] But if you click on the tab.
+2026-04-22 22:50:50,078 [INFO]   [4247.0s - 4247.4s] [en] Maps.
+2026-04-22 22:50:50,078 [INFO]   [4248.6s - 4250.3s] [en] You'll be able to access.
+2026-04-22 22:50:50,078 [INFO]   [4250.5s - 4251.4s] [en] All of this.
+2026-04-22 22:50:50,079 [INFO]   [4252.5s - 4253.7s] [en] Map over here.
+2026-04-22 22:50:50,079 [INFO]   [4254.6s - 4256.1s] [en] And you can drag this.
+2026-04-22 22:51:21,288 [INFO]   [4256.6s - 4257.5s] [en] Bug colors.
+2026-04-22 22:51:21,289 [INFO]   [4257.6s - 4258.8s] [en] Is going to be.
+2026-04-22 22:51:21,289 [INFO]   [4259.8s - 4260.7s] [en] Diffuse map.
+2026-04-22 22:51:21,289 [INFO]   [4261.1s - 4262.2s] [en] Or base color map.
+2026-04-22 22:51:21,289 [INFO]   [4262.5s - 4263.5s] [en] It's just different name.
+2026-04-22 22:51:21,290 [INFO]   [4264.2s - 4265.2s] [en] In different program.
+2026-04-22 22:51:21,290 [INFO]   [4265.4s - 4266.9s] [en] But it means the same thing.
+2026-04-22 22:51:21,290 [INFO]   [4267.7s - 4268.9s] [en] The color information.
+2026-04-22 22:51:21,290 [INFO]   [4269.2s - 4269.7s] [en] Of the texture.
+2026-04-22 22:51:21,290 [INFO]   [4272.2s - 4272.6s] [en] Yeah.
+2026-04-22 22:51:21,291 [INFO]   [4275.4s - 4276.8s] [en] So if you drag it here.
+2026-04-22 22:51:21,291 [INFO]   [4280.1s - 4281.5s] [en] You're going to have the character.
+2026-04-22 22:51:21,291 [INFO]   [4283.1s - 4283.7s] [en] Exported.
+2026-04-22 22:51:21,291 [INFO]   [4284.9s - 4286.6s] [en] From blender to top designer.
+2026-04-22 22:51:21,292 [INFO]   [4288.0s - 4288.2s] [en] Yeah.
+2026-04-22 22:51:21,292 [INFO]   [4293.1s - 4294.4s] [en] Of course the materials.
+2026-04-22 22:51:21,292 [INFO]   [4294.8s - 4295.8s] [en] A little bit shiny.
+2026-04-22 22:51:21,292 [INFO]   [4296.4s - 4298.2s] [en] You can use the roughness over here.
+2026-04-22 22:51:21,292 [INFO]   [4298.2s - 4299.2s] [en] Increase it.
+2026-04-22 22:51:21,292 [INFO]   [4300.7s - 4301.2s] [en] Okay.
+2026-04-22 22:51:47,899 [INFO]   [4301.2s - 4304.7s] [en] So that it looks more or less the same as.
+2026-04-22 22:51:47,900 [INFO]   [4305.0s - 4306.6s] [en] The character in top designer.
+2026-04-22 22:51:47,900 [INFO]   [4308.1s - 4308.6s] [en] In blender.
+2026-04-22 22:51:47,900 [INFO]   [4310.9s - 4311.2s] [en] Okay.
+2026-04-22 22:51:47,901 [INFO]   [4316.1s - 4318.6s] [en] And all the texture is correct.
+2026-04-22 22:51:47,901 [INFO]   [4319.2s - 4320.3s] [en] Please display.
+2026-04-22 22:51:47,901 [INFO]   [4324.1s - 4324.6s] [en] Yeah.
+2026-04-22 22:51:47,902 [INFO]   [4331.0s - 4333.0s] [en] How do you export.
+2026-04-22 22:51:47,902 [INFO]   [4334.0s - 4335.9s] [en] A character.
+2026-04-22 22:51:47,902 [INFO]   [4337.3s - 4338.2s] [en] With material.
+2026-04-22 22:51:47,902 [INFO]   [4339.7s - 4341.2s] [en] From blender to top designer.
+2026-04-22 22:51:47,903 [INFO]   [4343.2s - 4343.2s] [en] Okay.
+2026-04-22 22:51:47,903 [INFO]   [4345.1s - 4345.6s] [en] Yeah.
+2026-04-22 22:51:47,903 [INFO]   [4346.2s - 4346.5s] [en] Okay.
+2026-04-22 22:51:47,903 [INFO]   [4346.6s - 4347.1s] [en] So.
+2026-04-22 22:51:47,903 [INFO]   [4348.6s - 4348.7s] [en] Alright.
+2026-04-22 22:51:47,904 [INFO]   [4349.5s - 4350.3s] [en] Yeah.
+2026-04-22 22:51:47,904 [INFO]   [4351.4s - 4351.8s] [en] Okay.
+2026-04-22 22:52:15,563 [INFO]   [4351.8s - 4356.1s] [en] And this is.
+2026-04-22 22:52:15,564 [INFO]   [4356.2s - 4357.5s] [en] Rendering natively.
+2026-04-22 22:52:15,564 [INFO]   [4358.1s - 4358.9s] [en] In top designer.
+2026-04-22 22:52:15,565 [INFO]   [4359.9s - 4361.8s] [en] What is the advantage of this.
+2026-04-22 22:52:15,565 [INFO]   [4362.8s - 4362.9s] [en] Okay.
+2026-04-22 22:52:15,565 [INFO]   [4363.6s - 4364.6s] [en] Anything happens.
+2026-04-22 22:52:15,565 [INFO]   [4365.1s - 4366.0s] [en] With the animations.
+2026-04-22 22:52:15,565 [INFO]   [4366.4s - 4367.3s] [en] It's real time.
+2026-04-22 22:52:15,566 [INFO]   [4368.2s - 4368.6s] [en] Okay.
+2026-04-22 22:52:15,566 [INFO]   [4369.0s - 4371.2s] [en] So if you want to modify anything.
+2026-04-22 22:52:15,566 [INFO]   [4372.7s - 4373.5s] [en] You do it right.
+2026-04-22 22:52:15,567 [INFO]   [4373.9s - 4374.6s] [en] In top designer.
+2026-04-22 22:52:15,567 [INFO]   [4374.7s - 4376.6s] [en] You don't need to wait for the time.
+2026-04-22 22:52:15,567 [INFO]   [4377.4s - 4378.8s] [en] For the animation to render.
+2026-04-22 22:52:15,568 [INFO]   [4379.0s - 4380.9s] [en] And then plug it in top designer again.
+2026-04-22 22:52:15,568 [INFO]   [4382.6s - 4383.7s] [en] But this advantage.
+2026-04-22 22:52:15,568 [INFO]   [4385.2s - 4386.6s] [en] It requires a lot of RAM.
+2026-04-22 22:52:15,569 [INFO]   [4387.1s - 4388.8s] [en] And GPU to run in real time.
+2026-04-22 22:52:42,972 [INFO]   [4390.2s - 4390.9s] [en] Yeah.
+2026-04-22 22:52:42,973 [INFO]   [4391.3s - 4392.8s] [en] So that's the.
+2026-04-22 22:52:42,973 [INFO]   [4393.3s - 4394.5s] [en] And the quality.
+2026-04-22 22:52:42,973 [INFO]   [4395.2s - 4396.9s] [en] Compared to blender.
+2026-04-22 22:52:42,974 [INFO]   [4397.6s - 4398.7s] [en] Is inferior.
+2026-04-22 22:52:42,974 [INFO]   [4399.8s - 4401.2s] [en] It's less quality.
+2026-04-22 22:52:42,974 [INFO]   [4402.2s - 4402.4s] [en] Than blender.
+2026-04-22 22:52:42,974 [INFO]   [4403.2s - 4403.4s] [en] Okay.
+2026-04-22 22:52:42,975 [INFO]   [4403.4s - 4405.5s] [en] Of course I can do a little bit of.
+2026-04-22 22:52:42,975 [INFO]   [4405.7s - 4406.2s] [en] Tricks.
+2026-04-22 22:52:42,976 [INFO]   [4406.9s - 4408.1s] [en] To make it look better.
+2026-04-22 22:52:42,976 [INFO]   [4409.0s - 4409.2s] [en] Okay.
+2026-04-22 22:52:42,976 [INFO]   [4409.2s - 4410.4s] [en] Add a little bit of bloom.
+2026-04-22 22:52:42,977 [INFO]   [4416.4s - 4417.9s] [en] Or I can use this.
+2026-04-22 22:52:42,977 [INFO]   [4418.2s - 4420.2s] [en] Bloom over here on the palette.
+2026-04-22 22:52:42,977 [INFO]   [4422.5s - 4423.6s] [en] Image filter.
+2026-04-22 22:52:42,978 [INFO]   [4424.3s - 4425.5s] [en] And bloom over here.
+2026-04-22 22:52:42,978 [INFO]   [4436.2s - 4437.5s] [en] And blur size.
+2026-04-22 22:52:42,978 [INFO]   [4439.0s - 4439.7s] [en] Low level.
+2026-04-22 22:53:11,618 [INFO]   [4439.7s - 4446.3s] [en] I can do a little bit of tricks over here.
+2026-04-22 22:53:11,618 [INFO]   [4447.9s - 4447.9s] [en] Okay.
+2026-04-22 22:53:11,618 [INFO]   [4466.7s - 4467.0s] [en] Okay.
+2026-04-22 22:53:11,619 [INFO]   [4468.3s - 4469.9s] [en] So it looks a little bit better.
+2026-04-22 22:53:11,619 [INFO]   [4474.6s - 4475.9s] [en] But compared to blender.
+2026-04-22 22:53:11,620 [INFO]   [4476.2s - 4477.0s] [en] Of course.
+2026-04-22 22:53:11,620 [INFO]   [4477.0s - 4478.8s] [en] Blender has a built in.
+2026-04-22 22:53:11,621 [INFO]   [4480.2s - 4481.7s] [en] Blender is a 3D program.
+2026-04-22 22:53:11,621 [INFO]   [4481.8s - 4483.4s] [en] So you see the physical.
+2026-04-22 22:53:11,621 [INFO]   [4484.4s - 4485.8s] [en] Rendering of the.
+2026-04-22 22:53:11,621 [INFO]   [4486.3s - 4487.7s] [en] Material is superior.
+2026-04-22 22:53:11,621 [INFO]   [4488.9s - 4489.6s] [en] To top designer.
+2026-04-22 22:53:11,622 [INFO]   [4490.5s - 4490.9s] [en] Okay.
+2026-04-22 22:53:11,622 [INFO]   [4492.4s - 4492.8s] [en] But.
+2026-04-22 22:53:11,622 [INFO]   [4494.0s - 4494.3s] [en] Okay.
+2026-04-22 22:53:11,622 [INFO]   [4496.6s - 4497.6s] [en] It's possible.
+2026-04-22 22:53:11,622 [INFO]   [4498.5s - 4499.9s] [en] To do real time rendering.
+2026-04-22 22:53:11,622 [INFO]   [4500.1s - 4500.6s] [en] In top designer.
+2026-04-22 22:53:11,623 [INFO]   [4501.4s - 4501.7s] [en] Right.
+2026-04-22 22:53:11,623 [INFO]   [4514.1s - 4514.7s] [en] Yes.
+2026-04-22 22:53:11,623 [INFO]   [4517.7s - 4518.1s] [en] Okay.
+2026-04-22 22:53:42,283 [INFO]   [4519.1s - 4519.8s] [en] So.
+2026-04-22 22:53:42,284 [INFO]   [4520.0s - 4521.3s] [en] Is there any question.
+2026-04-22 22:53:42,284 [INFO]   [4521.4s - 4522.6s] [en] Regarding this workflow.
+2026-04-22 22:53:42,284 [INFO]   [4536.2s - 4536.5s] [en] Each.
+2026-04-22 22:53:42,284 [INFO]   [4637.7s - 4638.0s] [en] Here.
+2026-04-22 22:53:42,284 [INFO]   [4642.3s - 4642.6s] [en] A little.
+2026-04-22 22:53:42,286 [INFO]   [4647.2s - 4647.9s] [en] Okay.
+2026-04-22 22:53:42,286 [INFO]   [4666.5s - 4667.5s] [en] Now any questions.
+2026-04-22 22:53:42,286 [INFO]   [4668.9s - 4669.1s] [en] Hello.
+2026-04-22 22:53:42,286 [INFO]   [4673.5s - 4673.6s] [en] Question.
+2026-04-22 22:53:42,286 [INFO]   [4674.5s - 4674.8s] [en] Yes.
+2026-04-22 22:53:42,286 [INFO]   [4680.3s - 4680.6s] [en] Now.
+2026-04-22 22:53:42,286 [INFO]   [4683.0s - 4683.6s] [en] What's the question?
+2026-04-22 22:53:42,287 [INFO]   [4690.6s - 4691.6s] [en] There's two bloom.
+2026-04-22 22:53:42,287 [INFO]   [4694.6s - 4696.8s] [en] There's one bloom in the top over here.
+2026-04-22 22:53:42,287 [INFO]   [4697.3s - 4697.9s] [en] Okay.
+2026-04-22 22:53:42,287 [INFO]   [4698.6s - 4699.7s] [en] But what I use.
+2026-04-22 22:53:42,288 [INFO]   [4701.1s - 4702.5s] [en] Is a more advanced thing.
+2026-04-22 22:53:42,288 [INFO]   [4702.7s - 4704.0s] [en] Is inside the palette.
+2026-04-22 22:53:42,288 [INFO]   [4704.3s - 4705.1s] [en] Image filter.
+2026-04-22 22:53:42,288 [INFO]   [4706.0s - 4706.4s] [en] And bloom.
+2026-04-22 22:54:11,550 [INFO]   [4707.3s - 4708.9s] [en] You will have more control.
+2026-04-22 22:54:11,551 [INFO]   [4709.1s - 4709.5s] [en] With this bloom.
+2026-04-22 22:54:11,551 [INFO]   [4714.7s - 4715.9s] [en] This is the.
+2026-04-22 22:54:11,551 [INFO]   [4716.5s - 4716.9s] [en] Top bloom.
+2026-04-22 22:54:11,552 [INFO]   [4722.7s - 4722.9s] [en] Yeah.
+2026-04-22 22:54:11,552 [INFO]   [4727.0s - 4728.6s] [en] And this is the.
+2026-04-22 22:54:11,552 [INFO]   [4729.1s - 4729.7s] [en] Bloom.
+2026-04-22 22:54:11,552 [INFO]   [4730.0s - 4730.3s] [en] Palette.
+2026-04-22 22:54:11,552 [INFO]   [4731.2s - 4731.5s] [en] Alright.
+2026-04-22 22:54:11,553 [INFO]   [4732.5s - 4733.3s] [en] Different effects.
+2026-04-22 22:54:11,553 [INFO]   [4759.7s - 4760.6s] [en] Glow colors.
+2026-04-22 22:54:11,554 [INFO]   [4767.6s - 4768.1s] [en] Hold on.
+2026-04-22 22:54:11,554 [INFO]   [4780.5s - 4781.1s] [en] Why you want.
+2026-04-22 22:54:11,554 [INFO]   [4783.7s - 4784.8s] [en] Why you need to.
+2026-04-22 22:54:11,555 [INFO]   [4785.3s - 4786.0s] [en] Do things together.
+2026-04-22 22:54:11,555 [INFO]   [4790.8s - 4790.9s] [en] Like.
+2026-04-22 22:54:11,555 [INFO]   [4816.0s - 4816.6s] [en] Yeah.
+2026-04-22 22:54:11,555 [INFO]   [4817.0s - 4818.6s] [en] This blue is the same.
+2026-04-22 22:54:11,556 [INFO]   [4837.8s - 4839.2s] [en] It doesn't really do anything.
+2026-04-22 22:54:11,556 [INFO]   [4841.6s - 4842.4s] [en] Because like bloom.
+2026-04-22 22:54:11,556 [INFO]   [4843.9s - 4845.7s] [en] You have like very similar.
+2026-04-22 22:54:24,285 [INFO]   [4851.3s - 4851.8s] [en] Okay.
+2026-04-22 22:54:24,286 [INFO]   [4874.1s - 4874.4s] [en] Now.
+2026-04-22 22:54:24,286 [INFO]   [4879.1s - 4879.2s] [en] Anyone.
+2026-04-22 22:54:24,286 [INFO]   [4879.6s - 4879.8s] [en] Have.
+2026-04-22 22:54:24,286 [INFO]   [4882.2s - 4882.4s] [en] To let.
+2026-04-22 22:54:24,291 [INFO] Transcription complete: 639 segments in 1768.2s
+2026-04-22 22:54:24,470 [INFO] Transcript saved to: C:\tutorial-pipeline\working\lab8_new.transcript.json
+2026-04-23 06:07:55,334 [INFO] === Stage 1: Transcription ===
+2026-04-23 06:07:55,334 [INFO] Input: C:\tutorial-pipeline\inbox\lab8_new.mp4
+2026-04-23 06:07:55,334 [INFO] Output: C:\tutorial-pipeline\working\lab8_new.transcript.json
+2026-04-23 06:08:00,330 [INFO] Loading Whisper model: medium on cpu (int8)
+2026-04-23 06:08:01,635 [INFO] HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-medium/revision/main "HTTP/1.1 200 OK"
+2026-04-23 06:08:06,248 [INFO] Transcribing: C:\tutorial-pipeline\inbox\lab8_new.mp4
+2026-04-23 06:08:14,214 [INFO] Processing audio with duration 01:21:22.483
+2026-04-23 06:27:26,039 [INFO] === Stage 1: Transcription ===
+2026-04-23 06:27:26,040 [INFO] Input: C:\tutorial-pipeline\inbox\lab8_new.mp4
+2026-04-23 06:27:26,040 [INFO] Output: C:\tutorial-pipeline\working\lab8_new.transcript.json
+2026-04-23 06:27:26,698 [INFO] Loading Whisper model: medium on cpu (int8)
+2026-04-23 06:27:28,030 [INFO] HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-medium/revision/main "HTTP/1.1 200 OK"
+2026-04-23 06:27:32,791 [INFO] Transcribing: C:\tutorial-pipeline\inbox\lab8_new.mp4
+2026-04-23 06:27:40,796 [INFO] Processing audio with duration 01:21:22.483
+2026-04-23 06:28:04,465 [INFO] VAD filter removed 50:07.032 of audio
