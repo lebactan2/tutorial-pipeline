@@ -1,0 +1,1 @@
+.\scripts\run.ps1 -VideoPath "inbox\ten_video_moi.mp4" -TargetLanguage english -VoiceEngine neutts -VoiceRef "voice_refs\english.mp3" -SkipCloud

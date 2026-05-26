@@ -1,8 +1,27 @@
 node_modules/
 dist/
 build/
+.venv/
 .env
 __pycache__/
 *.pyc
 *.mp4
 *.wav
+*.mp3
+
+# Generated/runtime files
+inbox/*
+working/*
+output/*
+logs/*
+voice_refs/*
+gemini_conversation/.system_generated/
+
+!inbox/.gitkeep
+!working/.gitkeep
+!output/.gitkeep
+!logs/.gitkeep
+!voice_refs/.gitkeep
+
+# External dependencies cloned by setup.ps1
+vieneu/

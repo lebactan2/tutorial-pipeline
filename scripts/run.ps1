@@ -10,6 +10,12 @@
     Path to voice reference WAV (default: voice_refs\reference.wav)
 .PARAMETER SkipCloud
     Skip cloud voice generation even if API key is present
+.PARAMETER RequireVoiceClone
+    Fail local voice generation if the reference voice cannot be cloned
+.PARAMETER TargetLanguage
+    Output script language: original, english, or vietnamese. Use vietnamese before VieNeu.
+.PARAMETER VoiceEngine
+    TTS engine: auto, neutts, or vieneu. Auto uses NeuTTS unless TargetLanguage is vietnamese.
 .EXAMPLE
     .\scripts\run.ps1 -VideoPath "inbox\my_tutorial.mp4"
     .\scripts\run.ps1 -VideoPath "C:\Users\me\Desktop\recording.mp4" -SkipCloud
@@ -21,6 +27,8 @@ param(
     [string]$VoiceRef = "",
 
     [switch]$SkipCloud,
+
+    [switch]$RequireVoiceClone,
     
     [string]$YoutubeUrl = "",
 
@@ -30,7 +38,13 @@ param(
     
     [switch]$ForceTranscribe,
 
-    [string]$LLMProvider = ""
+    [string]$LLMProvider = "",
+
+    [ValidateSet("original", "english", "vietnamese")]
+    [string]$TargetLanguage = "original",
+
+    [ValidateSet("auto", "neutts", "vieneu")]
+    [string]$VoiceEngine = "auto"
 )
 
 if (-not $VideoPath -and -not $YoutubeUrl) {
@@ -38,8 +52,9 @@ if (-not $VideoPath -and -not $YoutubeUrl) {
     exit 1
 }
 
-$ErrorActionPreference = "Stop"
-$PipelineRoot = "C:\tutorial-pipeline"
+$ErrorActionPreference = "Continue"
+$env:PYTHONUTF8 = "1"
+$PipelineRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
 $ScriptsDir = Join-Path $PipelineRoot "scripts"
 $InboxDir = Join-Path $PipelineRoot "inbox"
 $WorkingDir = Join-Path $PipelineRoot "working"
@@ -47,9 +62,27 @@ $OutputDir = Join-Path $PipelineRoot "output"
 $LogDir = Join-Path $PipelineRoot "logs"
 $ConfigDir = Join-Path $PipelineRoot "config"
 
-# Default voice reference
+# Resolve voice engine and default voice reference
+$EffectiveVoiceEngine = $VoiceEngine
+if ($EffectiveVoiceEngine -eq "auto") {
+    if ($TargetLanguage -eq "vietnamese") {
+        $EffectiveVoiceEngine = "vieneu"
+    } else {
+        $EffectiveVoiceEngine = "neutts"
+    }
+}
+
 if (-not $VoiceRef) {
-    $VoiceRef = Join-Path $PipelineRoot "voice_refs\reference.wav"
+    if ($EffectiveVoiceEngine -eq "neutts") {
+        $englishRef = Join-Path $PipelineRoot "voice_refs\english.mp3"
+        if (Test-Path $englishRef) {
+            $VoiceRef = $englishRef
+        } else {
+            $VoiceRef = Join-Path $PipelineRoot "voice_refs\reference.wav"
+        }
+    } else {
+        $VoiceRef = Join-Path $PipelineRoot "voice_refs\reference.wav"
+    }
 }
 
 # -------------------------------------------------
@@ -127,14 +160,20 @@ if ($YoutubeUrl) {
 $basename = [System.IO.Path]::GetFileNameWithoutExtension($VideoPath)
 Write-Pipeline "Input video: $VideoPath"
 Write-Pipeline "Basename: $basename"
+Write-Pipeline "Target language: $TargetLanguage"
+Write-Pipeline "Voice engine: $EffectiveVoiceEngine"
 
-# Check voice reference
+# Check voice reference. VieNeu can use this for cloning, but the local voice
+# script can fall back to a default/Windows voice when it is missing.
 if (-not (Test-Path $VoiceRef)) {
-    Write-Pipeline "Voice reference not found: $VoiceRef" "ERROR"
-    Write-Pipeline "Record a 30-60s reference and save as voice_refs\reference.wav" "ERROR"
-    exit 1
+    Write-Pipeline "Voice reference not found: $VoiceRef" "WARN"
+    Write-Pipeline "Continuing with default/fallback voice. Add voice_refs\reference.wav for cloning." "WARN"
+} else {
+    Write-Pipeline "Voice reference: $VoiceRef"
+    if ($RequireVoiceClone) {
+        Write-Pipeline "Voice clone required: local generation will fail if this reference cannot be used."
+    }
 }
-Write-Pipeline "Voice reference: $VoiceRef"
 
 # Activate venv
 $venvActivate = Join-Path $PipelineRoot ".venv\Scripts\Activate.ps1"
@@ -224,12 +263,12 @@ if ($SkipTranscribe) {
 # Stage 2: Clean Script
 # -------------------------------------------------
 Write-Pipeline ""
-Write-Pipeline ">>> Stage 2: Clean Script (Claude API)"
+Write-Pipeline ">>> Stage 2: Clean Script (LLM)"
 $stageStart = Get-Date
 
 $scriptPath = Join-Path $WorkingDir "$basename.script.json"
 $cleanScript = Join-Path $ScriptsDir "clean_script.py"
-$cleanCmd = "python `"$cleanScript`" `"$transcriptPath`""
+$cleanCmd = "python `"$cleanScript`" `"$transcriptPath`" --target-language $TargetLanguage"
 if ($LLMProvider) {
     $cleanCmd += " --provider $LLMProvider"
 }
@@ -252,16 +291,36 @@ Write-Pipeline "Stage 2 complete: $(Get-ElapsedString $stageElapsed)"
 Write-Pipeline "Script: $scriptPath"
 
 # -------------------------------------------------
-# Stage 3a: Local Voice (VieNeu-TTS)
+# Stage 3a: Local Voice (NeuTTS or VieNeu-TTS)
 # -------------------------------------------------
 Write-Pipeline ""
-Write-Pipeline ">>> Stage 3a: Local Voice Generation (VieNeu-TTS)"
+if ($EffectiveVoiceEngine -eq "neutts") {
+    Write-Pipeline ">>> Stage 3a: Local Voice Generation (NeuTTS)"
+} else {
+    Write-Pipeline ">>> Stage 3a: Local Voice Generation (VieNeu-TTS)"
+}
 $stageStart = Get-Date
 
-$localVoiceScript = Join-Path $ScriptsDir "generate_voice_local.py"
-
 $result = @()
-& python $localVoiceScript $scriptPath $VoiceRef 2>&1 | Tee-Object -Variable result
+if ($EffectiveVoiceEngine -eq "neutts") {
+    $localVoiceScript = Join-Path $ScriptsDir "generate_voice_neutts.py"
+    $localVoiceArgs = @(
+        $localVoiceScript,
+        $scriptPath,
+        $VoiceRef,
+        "--keep-segments"
+    )
+    if ($RequireVoiceClone) {
+        $localVoiceArgs += "--require-clone"
+    }
+} else {
+    $localVoiceScript = Join-Path $ScriptsDir "generate_voice_local.py"
+    $localVoiceArgs = @($localVoiceScript, $scriptPath, $VoiceRef, "--keep-segments")
+    if ($RequireVoiceClone) {
+        $localVoiceArgs += "--require-clone"
+    }
+}
+& python @localVoiceArgs 2>&1 | Tee-Object -Variable result
 $voiceOutput = ($result | Select-Object -Last 1).ToString().Trim()
 
 $localNarration = ""
@@ -273,12 +332,21 @@ if ($voiceOutput -match "\|") {
     $localTiming = $parts[1]
 } else {
     # Try default paths
-    $localNarration = Join-Path $WorkingDir "$basename.narration_local.wav"
-    $localTiming = Join-Path $WorkingDir "$basename.narration_timing.json"
+    if ($EffectiveVoiceEngine -eq "neutts") {
+        $localNarration = Join-Path $WorkingDir "$basename.narration_neutts.wav"
+        $localTiming = Join-Path $WorkingDir "$basename.narration_neutts_timing.json"
+    } else {
+        $localNarration = Join-Path $WorkingDir "$basename.narration_local.wav"
+        $localTiming = Join-Path $WorkingDir "$basename.narration_timing.json"
+    }
 }
 
 if (-not (Test-Path $localNarration)) {
-    Write-Pipeline "Local voice generation failed. Check logs\generate_voice_local.log" "ERROR"
+    if ($EffectiveVoiceEngine -eq "neutts") {
+        Write-Pipeline "Local voice generation failed. Check logs\generate_voice_neutts.log" "ERROR"
+    } else {
+        Write-Pipeline "Local voice generation failed. Check logs\generate_voice_local.log" "ERROR"
+    }
     exit 1
 }
 
@@ -322,12 +390,12 @@ if (-not $SkipCloud) {
 # Stage 5: Assemble -- Local version
 # -------------------------------------------------
 Write-Pipeline ""
-Write-Pipeline ">>> Stage 5a: Assemble (local voice)"
+Write-Pipeline ">>> Stage 5a: Assemble (local voice, timestamp aligned)"
 $stageStart = Get-Date
 
-$assembleScript = Join-Path $ScriptsDir "assemble.py"
+$assembleScript = Join-Path $ScriptsDir "assemble_aligned.py"
 
-& python $assembleScript $VideoPath $scriptPath $localNarration $localTiming --tag "local" 2>&1
+& python $assembleScript $VideoPath $localTiming --tag "local" 2>&1
 
 $localDraft = Join-Path $OutputDir "${basename}_draft_local.mp4"
 $srtFile = Join-Path $OutputDir "$basename.srt"
@@ -344,7 +412,8 @@ if ($cloudNarration -and (Test-Path $cloudNarration)) {
     Write-Pipeline ">>> Stage 5b: Assemble (cloud voice)"
     $stageStart = Get-Date
 
-    & python $assembleScript $VideoPath $scriptPath $cloudNarration $cloudTiming --tag "cloud" 2>&1
+    $classicAssembleScript = Join-Path $ScriptsDir "assemble.py"
+    & python $classicAssembleScript $VideoPath $scriptPath $cloudNarration $cloudTiming --tag "cloud" 2>&1
 
     $cloudDraft = Join-Path $OutputDir "${basename}_draft_cloud.mp4"
     $stageElapsed = (Get-Date) - $stageStart

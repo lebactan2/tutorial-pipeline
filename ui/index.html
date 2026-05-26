@@ -31,7 +31,21 @@
                         <option value="">Default Voice</option>
                     </select>
                     <button id="btnUploadVoice" class="secondary-btn" title="Upload Voice">+</button>
-                    <input type="file" id="voiceUploadInput" accept=".wav" style="display: none;">
+                    <input type="file" id="voiceUploadInput" accept=".wav,.mp3" style="display: none;">
+                </div>
+                <div class="input-group" style="margin-top: 10px;">
+                    <select id="voiceEngine">
+                        <option value="auto">Auto TTS</option>
+                        <option value="neutts">NeuTTS English</option>
+                        <option value="vieneu">VieNeu Vietnamese</option>
+                    </select>
+                </div>
+                <div class="input-group" style="margin-top: 10px;">
+                    <select id="targetLanguage">
+                        <option value="original">Keep Original Language</option>
+                        <option value="english">Translate to English</option>
+                        <option value="vietnamese">Translate to Vietnamese</option>
+                    </select>
                 </div>
                 <div class="input-group" style="margin-top: 15px;">
                     <button id="downloadBtn" class="primary-btn">Process</button>

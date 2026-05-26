@@ -4,7 +4,7 @@
 #>
 
 $ErrorActionPreference = "Stop"
-$PipelineRoot = "C:\tutorial-pipeline"
+$PipelineRoot = $PSScriptRoot
 
 # Activate venv
 $venvActivate = Join-Path $PipelineRoot ".venv\Scripts\Activate.ps1"

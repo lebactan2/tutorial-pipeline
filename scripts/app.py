@@ -91,7 +91,7 @@ def manage_settings():
 @app.route("/api/voices", methods=["GET", "POST"])
 def manage_voices():
     if request.method == "GET":
-        voices = [f.name for f in VOICE_REFS_DIR.glob("*.wav")]
+        voices = sorted([f.name for f in VOICE_REFS_DIR.glob("*.wav")] + [f.name for f in VOICE_REFS_DIR.glob("*.mp3")])
         return jsonify(voices)
     else:
         if 'file' not in request.files:
@@ -99,11 +99,11 @@ def manage_voices():
         file = request.files['file']
         if file.filename == '':
             return jsonify({"error": "No selected file"}), 400
-        if file and file.filename.endswith('.wav'):
+        if file and file.filename.lower().endswith(('.wav', '.mp3')):
             filename = secure_filename(file.filename)
             file.save(VOICE_REFS_DIR / filename)
             return jsonify({"status": "Voice uploaded successfully", "filename": filename})
-        return jsonify({"error": "Invalid file type. Must be .wav"}), 400
+        return jsonify({"error": "Invalid file type. Must be .wav or .mp3"}), 400
 
 @app.route("/api/upload_transcript", methods=["POST"])
 def upload_transcript():
@@ -146,11 +146,13 @@ def run_pipeline():
     voice_ref = data.get("voice_ref")
     skip_transcribe = data.get("skip_transcribe", False)
     force_transcribe = data.get("force_transcribe", False)
+    target_language = data.get("target_language", "original")
+    voice_engine = data.get("voice_engine", "auto")
     
     if not video_source:
         return jsonify({"error": "No video source provided"}), 400
     
-    def run_script(v_source, t_path, voice, skip_t, force_t):
+    def run_script(v_source, t_path, voice, skip_t, force_t, language, engine):
         script_path = PROJECT_ROOT / "scripts" / "run.ps1"
         cmd = ["powershell", "-ExecutionPolicy", "Bypass", "-File", str(script_path)]
         
@@ -167,10 +169,15 @@ def run_pipeline():
             cmd.append("-SkipTranscribe")
         if force_t:
             cmd.append("-ForceTranscribe")
+        cmd.extend(["-TargetLanguage", language])
+        cmd.extend(["-VoiceEngine", engine])
             
         subprocess.run(cmd, cwd=str(PROJECT_ROOT))
         
-    threading.Thread(target=run_script, args=(video_source, transcript_path, voice_ref, skip_transcribe, force_transcribe)).start()
+    threading.Thread(
+        target=run_script,
+        args=(video_source, transcript_path, voice_ref, skip_transcribe, force_transcribe, target_language, voice_engine),
+    ).start()
     return jsonify({"status": "Pipeline started in background"})
 
 @app.route("/files/<folder>/<path:filename>")
@@ -180,4 +187,5 @@ def serve_file(folder, filename):
     return send_from_directory(PROJECT_ROOT / folder, filename)
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=5000, debug=True)
+    debug = os.getenv("FLASK_DEBUG", "0") == "1"
+    app.run(host="127.0.0.1", port=5000, debug=debug, use_reloader=debug)

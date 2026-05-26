@@ -107,10 +107,13 @@ def overlay_narration(video_path: str, narration_path: str, output_path: str, lo
             f"This may indicate bad Stage 2 output. Using -shortest to handle."
         )
 
-    if audio_duration > video_duration + 2.0:
-        # Narration significantly longer — slow-stretch video
+    if abs(audio_duration - video_duration) > 2.0:
+        # Duration mismatch — stretch/squeeze video to match narration
         speed_factor = video_duration / audio_duration
-        logger.warning(f"Narration longer than video. Stretching video by {speed_factor:.2f}x")
+        logger.warning(
+            f"Duration mismatch: video={video_duration:.1f}s, narration={audio_duration:.1f}s. "
+            f"Stretching/squeezing video by {speed_factor:.2f}x"
+        )
         run_ffmpeg(
             ["-i", video_path, "-i", narration_path,
              "-filter_complex", f"[0:v]setpts={1/speed_factor:.4f}*PTS[v]",
@@ -120,18 +123,6 @@ def overlay_narration(video_path: str, narration_path: str, output_path: str, lo
              "-shortest", output_path],
             logger,
             "Overlay narration (with video stretch)",
-        )
-    elif video_duration > audio_duration + 2.0:
-        # Video significantly longer — use shortest
-        logger.info("Video longer than narration — using -shortest")
-        run_ffmpeg(
-            ["-i", video_path, "-i", narration_path,
-             "-an",  # strip original audio from video stream selection
-             "-map", "0:v", "-map", "1:a",
-             "-c:v", "copy", "-c:a", "aac", "-b:a", "192k",
-             "-shortest", output_path],
-            logger,
-            "Overlay narration (shortest mode)",
         )
     else:
         # Duration roughly matches

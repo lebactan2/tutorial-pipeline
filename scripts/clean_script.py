@@ -9,6 +9,7 @@ import logging
 import sys
 import time
 import os
+import re
 import warnings
 from pathlib import Path
 from dotenv import load_dotenv
@@ -39,37 +40,47 @@ def load_style_guide() -> str:
         return style_path.read_text(encoding="utf-8")
     return ""
 
-def build_system_prompt(style_guide: str) -> str:
+def build_system_prompt(style_guide: str, target_language: str = "original") -> str:
+    language_rule = {
+        "original": "Keep the original language of each segment. Do not translate.",
+        "vietnamese": (
+            "Translate the final cleaned script to natural Vietnamese. "
+            "Keep software names, node names, commands, file formats, and technical terms in English when that is clearer. "
+            "Set every output entry's lang to \"vi\"."
+        ),
+        "english": (
+            "Translate the final cleaned script to natural English. "
+            "Keep software names, node names, commands, and file formats unchanged. "
+            "Set every output entry's lang to \"en\"."
+        ),
+    }.get(target_language, "Keep the original language of each segment. Do not translate.")
+
     return f"""You are a script editor for bilingual English/Vietnamese tutorial videos.
 
-Your job is to take a raw transcript (with timestamps) and produce:
-1. A cleaned script with filler removed
-2. A list of timestamp ranges from the ORIGINAL video to keep
+Your job is to take a raw transcript (with timestamps) and produce a cleaned script with filler removed.
 
 STYLE GUIDE:
 {style_guide}
 
+LANGUAGE TARGET OVERRIDE (highest priority):
+{language_rule}
+
 RULES:
-- Remove filler words: um, uh, so, like, you know, actually, basically, ừm, à, thì, kiểu, cái này, cái đó
+- Remove filler words: um, uh, so, like, you know, actually, basically, alright, ok, okay, all right, oh yeah, ừm, à, thì, kiểu, cái này, cái đó
 - Remove false starts and self-corrections (keep the corrected version)
 - Remove repeated sentences or phrases (keep the best delivery)
-- Preserve the ORIGINAL language of each segment — never translate
-- For mixed English/Vietnamese sentences, keep the mix intact
+- Follow the LANGUAGE TARGET OVERRIDE above for translation behavior.
+- For mixed English/Vietnamese sentences, keep the mix intact only when target language is original.
 - Keep technical terms in English
 - Combine very short consecutive segments in the same language into one entry
-- The keep_ranges must use the ORIGINAL video timestamps and should cover all content you kept
-- Merge adjacent keep_ranges that are less than 0.5s apart
-- Remove ranges corresponding to: filler, long silences (>1.5s), verbal mistakes
+- For each entry in your cleaned script, you MUST preserve the original start and end timestamps from the raw transcript.
+- If you combine multiple consecutive segments into one entry, set "start" to the start timestamp of the first segment and "end" to the end timestamp of the last segment in the combined group.
 
 OUTPUT FORMAT — respond with valid JSON only, no markdown fences, no extra text:
 {{
   "cleaned_script": [
-    {{"lang": "en", "text": "cleaned text here"}},
-    {{"lang": "vi", "text": "cleaned text here"}}
-  ],
-  "keep_ranges": [
-    {{"start": 0.0, "end": 5.2, "reason": "introduction"}},
-    {{"start": 7.1, "end": 15.3, "reason": "main explanation"}}
+    {{"lang": "en", "text": "cleaned text here", "start": 0.0, "end": 5.2}},
+    {{"lang": "vi", "text": "cleaned text here", "start": 7.1, "end": 15.3}}
   ]
 }}"""
 
@@ -80,18 +91,232 @@ def load_system_config():
             return json.load(f)
     return {}
 
-def clean_script(transcript: dict, logger: logging.Logger, provider_override: str = None, max_retries: int = 3) -> dict:
+def compact_transcript(transcript: dict) -> dict:
+    """Keep only the fields the editor needs so long videos fit LLM context."""
+    compact_segments = []
+    for segment in transcript.get("segments", []):
+        text = str(segment.get("text", "")).strip()
+        if not text:
+            continue
+
+        compact_segments.append({
+            "start": round(float(segment.get("start", 0.0)), 3),
+            "end": round(float(segment.get("end", 0.0)), 3),
+            "lang": segment.get("lang", "en"),
+            "text": text,
+        })
+
+    return {"segments": compact_segments}
+
+def build_rough_script(transcript: dict, logger: logging.Logger, target_language: str = "original") -> dict:
+    """Local fallback when the LLM API/model is unavailable."""
+    compact = compact_transcript(transcript)
+    cleaned_script = []
+    keep_ranges = []
+
+    for segment in compact["segments"]:
+        text = clean_text_locally(segment["text"])
+        if not text:
+            continue
+
+        entry = {
+            "lang": segment.get("lang", "en"),
+            "text": text,
+            "start": segment["start"],
+            "end": segment["end"],
+        }
+
+        if (
+            cleaned_script
+            and cleaned_script[-1].get("lang") == entry["lang"]
+            and segment["start"] - float(cleaned_script[-1].get("end", segment["start"])) <= 1.0
+            and len(cleaned_script[-1]["text"]) + len(text) <= 320
+        ):
+            cleaned_script[-1]["text"] = f"{cleaned_script[-1]['text']} {text}"
+            cleaned_script[-1]["end"] = segment["end"]
+        else:
+            cleaned_script.append(entry)
+
+        keep_ranges.append({
+            "start": segment["start"],
+            "end": segment["end"],
+            "reason": "rough fallback",
+        })
+
+    if target_language != "original":
+        logger.warning(
+            "Using local cleanup fallback: filler was removed locally, "
+            "but translation was not applied because no LLM response was available."
+        )
+    else:
+        logger.warning(
+            "Using local script cleanup fallback: filler was removed locally, "
+            "but no LLM rewrite was applied."
+        )
+    return {
+        "cleaned_script": cleaned_script,
+        "keep_ranges": merge_keep_ranges(keep_ranges),
+    }
+
+def clean_text_locally(text: str) -> str:
+    """Conservative local cleanup for when the LLM API is unavailable."""
+    text = str(text or "").strip()
+    if not text:
+        return ""
+
+    replacements = [
+        (r"\b(?:um+|uh+|erm+|ah+)\b", " "),
+        (r"\b(?:okay|ok|alright|all right)\b[, ]*", " "),
+        (r"\b(?:basically|actually|literally)\b[, ]*", " "),
+        (r"\b(?:you know|i mean|sort of|kind of)\b[, ]*", " "),
+        (r"\bso[, ]+(?=\w)", " "),
+        (r"^(?:and|then|now|so)[,\s]+", ""),
+        (r"\b(\w+)(?:\s+\1\b)+", r"\1"),
+    ]
+
+    for pattern, repl in replacements:
+        text = re.sub(pattern, repl, text, flags=re.IGNORECASE)
+
+    text = re.sub(r"\s+([,.!?;:])", r"\1", text)
+    text = re.sub(r"\s{2,}", " ", text)
+    text = text.strip(" ,;:-")
+
+    if not text:
+        return ""
+
+    filler_only = {"yeah", "yes", "no", "right", "sorry", "thanks", "thank you"}
+    if text.lower() in filler_only:
+        return ""
+
+    return text[:1].upper() + text[1:]
+
+def merge_keep_ranges(keep_ranges: list, gap_seconds: float = 0.5) -> list:
+    if not keep_ranges:
+        return []
+
+    sorted_ranges = sorted(keep_ranges, key=lambda x: x["start"])
+    merged = []
+
+    for current in sorted_ranges:
+        if not merged or current["start"] > merged[-1]["end"] + gap_seconds:
+            merged.append(dict(current))
+            continue
+
+        merged[-1]["end"] = max(merged[-1]["end"], current["end"])
+        merged[-1]["reason"] = "merged content"
+
+    return merged
+
+def antigravity_models(system_config: dict) -> list:
+    configured = system_config.get("antigravity_model") or system_config.get("gemini_model")
+    if configured:
+        return [configured]
+    candidates = [
+        "gemini-2.0-flash",
+        "gemini-2.5-flash",
+        "gemini-2.5-pro",
+        "gemini-1.5-flash",
+        "gemini-pro",
+    ]
+    return [model for i, model in enumerate(candidates) if model and model not in candidates[:i]]
+
+def split_env_list(value: str) -> list[str]:
+    if not value:
+        return []
+    return [item.strip().strip("'\"") for item in re.split(r"[\n,;]+", value) if item.strip()]
+
+def antigravity_api_keys() -> list[str]:
+    keys = []
+    primary = os.getenv("ANTIGRAVITY_API_KEY", "").strip().strip("'\"")
+    if primary:
+        keys.append(primary)
+    keys.extend(split_env_list(os.getenv("ANTIGRAVITY_API_KEYS", "")))
+
+    deduped = []
+    seen = set()
+    for key in keys:
+        if key and key not in seen:
+            deduped.append(key)
+            seen.add(key)
+    return deduped
+
+def is_quota_or_rate_limit_error(error: Exception) -> bool:
+    text = str(error).lower()
+    return any(
+        marker in text
+        for marker in [
+            "429",
+            "quota",
+            "rate limit",
+            "rate_limit",
+            "resourceexhausted",
+            "resource exhausted",
+        ]
+    )
+
+def clean_script(
+    transcript: dict,
+    logger: logging.Logger,
+    provider_override: str = None,
+    target_language: str = "original",
+    max_retries: int = 3,
+    allow_chunking: bool = True,
+) -> dict:
     load_dotenv(CONFIG_DIR / ".env")
 
-    style_guide = load_style_guide()
-    system_prompt = build_system_prompt(style_guide)
     system_config = load_system_config()
+    target_language = target_language or system_config.get("target_language", "original")
+    style_guide = load_style_guide()
+    system_prompt = build_system_prompt(style_guide, target_language)
     
     provider = provider_override if provider_override else system_config.get("llm_provider", "claude")
 
-    # Build the user message with the transcript
-    transcript_text = json.dumps(transcript, ensure_ascii=False, indent=2)
-    user_message = f"""Here is the raw transcript with word-level timestamps. Clean it up according to the style guide and produce the JSON output.
+    # Build a compact user message. Word-level timestamps make long videos too large
+    # for many model context windows, while segment timestamps are enough here.
+    compact = compact_transcript(transcript)
+
+    chunk_size = 40
+    if allow_chunking and len(compact["segments"]) > chunk_size:
+        logger.info(
+            f"Long transcript detected ({len(compact['segments'])} segments). "
+            f"Cleaning in chunks of {chunk_size}."
+        )
+
+        merged_script = []
+        merged_ranges = []
+        chunks = [
+            compact["segments"][i:i + chunk_size]
+            for i in range(0, len(compact["segments"]), chunk_size)
+        ]
+
+        for idx, chunk in enumerate(chunks, start=1):
+            logger.info(f"Cleaning chunk {idx}/{len(chunks)} ({len(chunk)} segments)")
+            chunk_result = clean_script(
+                {"segments": chunk},
+                logger,
+                provider_override=provider,
+                target_language=target_language,
+                max_retries=1,
+                allow_chunking=False,
+            )
+            merged_script.extend(chunk_result.get("cleaned_script", []))
+            merged_ranges.extend(chunk_result.get("keep_ranges", []))
+            if idx < len(chunks):
+                time.sleep(7)
+
+        result = {
+            "cleaned_script": merged_script,
+            "keep_ranges": merge_keep_ranges(merged_ranges),
+        }
+        logger.info(
+            f"Chunked cleanup complete: {len(result['cleaned_script'])} segments, "
+            f"{len(result['keep_ranges'])} keep ranges"
+        )
+        return result
+
+    transcript_text = json.dumps(compact, ensure_ascii=False, separators=(",", ":"))
+    logger.info(f"Transcript compacted to {len(compact['segments'])} segments")
+    user_message = f"""Here is the raw transcript with segment timestamps. Clean it up according to the style guide and produce the JSON output.
 
 TRANSCRIPT:
 {transcript_text}"""
@@ -118,14 +343,49 @@ TRANSCRIPT:
                 raw_text = response.content[0].text.strip()
             elif provider == "antigravity":
                 import google.generativeai as genai
-                api_key = os.getenv("ANTIGRAVITY_API_KEY")
-                if not api_key:
+                api_keys = antigravity_api_keys()
+                if not api_keys:
                     logger.error("ANTIGRAVITY_API_KEY not set. Add it to config/.env")
                     sys.exit(1)
-                genai.configure(api_key=api_key)
-                generative_model = genai.GenerativeModel('gemini-1.5-pro', system_instruction=system_prompt)
-                response = generative_model.generate_content(user_message)
-                raw_text = response.text.strip()
+                last_model_error = None
+                models = antigravity_models(system_config)
+                for key_index, api_key in enumerate(api_keys, start=1):
+                    genai.configure(api_key=api_key)
+                    logger.info(f"Using Gemini API key {key_index}/{len(api_keys)}")
+                    key_quota_exhausted = False
+                    for model_name in models:
+                        try:
+                            logger.info(f"Using Gemini model: {model_name}")
+                            generative_model = genai.GenerativeModel(model_name, system_instruction=system_prompt)
+                            generation_config = genai.types.GenerationConfig(
+                                max_output_tokens=16384,
+                                response_mime_type="application/json"
+                            )
+                            response = generative_model.generate_content(
+                                user_message,
+                                generation_config=generation_config
+                            )
+                            raw_text = response.text.strip()
+                            break
+                        except Exception as model_error:
+                            last_model_error = model_error
+                            if is_quota_or_rate_limit_error(model_error):
+                                key_quota_exhausted = True
+                                logger.warning(
+                                    f"Gemini API key {key_index}/{len(api_keys)} hit quota/rate limit; "
+                                    "trying the next key."
+                                )
+                                break
+                            logger.warning(f"Gemini model {model_name} failed: {model_error}")
+                    if raw_text:
+                        break
+                    if not key_quota_exhausted and last_model_error:
+                        logger.warning(
+                            f"Gemini API key {key_index}/{len(api_keys)} returned no usable text; "
+                            "trying the next key."
+                        )
+                if not raw_text:
+                    raise last_model_error or RuntimeError("No Gemini model returned text")
             elif provider == "openrouter" or provider == "custom":
                 import openai
                 
@@ -155,8 +415,10 @@ TRANSCRIPT:
                 )
                 raw_text = response.choices[0].message.content.strip()
             else:
+                if provider == "local":
+                    return build_rough_script(transcript, logger, target_language)
                 logger.error(f"Unknown provider: {provider}")
-                sys.exit(1)
+                return build_rough_script(transcript, logger, target_language)
 
             elapsed = time.time() - start_time
             logger.info(f"API response received in {elapsed:.1f}s")
@@ -174,16 +436,25 @@ TRANSCRIPT:
             result = json.loads(raw_text)
 
             # Validate schema
-            if "cleaned_script" not in result or "keep_ranges" not in result:
-                raise ValueError("Missing required keys: cleaned_script, keep_ranges")
+            if "cleaned_script" not in result:
+                raise ValueError("Missing required key: cleaned_script")
 
+            keep_ranges = []
             for entry in result["cleaned_script"]:
                 if "lang" not in entry or "text" not in entry:
                     raise ValueError(f"Invalid script entry: {entry}")
+                if "start" in entry and "end" in entry:
+                    try:
+                        keep_ranges.append({
+                            "start": round(float(entry["start"]), 3),
+                            "end": round(float(entry["end"]), 3),
+                            "reason": "cleaned segment"
+                        })
+                    except (ValueError, TypeError):
+                        pass
 
-            for kr in result["keep_ranges"]:
-                if "start" not in kr or "end" not in kr:
-                    raise ValueError(f"Invalid keep_range: {kr}")
+            # Programmatically generate keep_ranges and merge them
+            result["keep_ranges"] = merge_keep_ranges(keep_ranges)
 
             logger.info(f"Cleaned script: {len(result['cleaned_script'])} segments, "
                         f"{len(result['keep_ranges'])} keep ranges")
@@ -197,23 +468,32 @@ TRANSCRIPT:
                 time.sleep(wait)
             else:
                 logger.error(f"All {max_retries} attempts failed. Last response:\n{raw_text[:500]}")
-                sys.exit(1)
+                return build_rough_script(transcript, logger, target_language)
 
         except Exception as e:
             logger.warning(f"Attempt {attempt}: Error: {e}")
             if attempt < max_retries:
-                wait = 2 ** attempt
+                if is_quota_or_rate_limit_error(e):
+                    wait = 20 + attempt * 10
+                else:
+                    wait = 2 ** attempt
                 logger.info(f"Retrying in {wait}s...")
                 time.sleep(wait)
             else:
                 logger.error(f"All {max_retries} attempts failed: {e}")
-                sys.exit(1)
+                return build_rough_script(transcript, logger, target_language)
 
 def main():
     parser = argparse.ArgumentParser(description="Clean transcript via AI API")
     parser.add_argument("transcript_path", help="Path to transcript JSON file")
     parser.add_argument("--output", help="Override output path")
-    parser.add_argument("--provider", choices=["claude", "antigravity", "openrouter", "custom"], help="Override LLM provider")
+    parser.add_argument("--provider", choices=["claude", "antigravity", "openrouter", "custom", "local"], help="Override LLM provider")
+    parser.add_argument(
+        "--target-language",
+        choices=["original", "vietnamese", "english"],
+        default="original",
+        help="Output script language. Use vietnamese before VieNeu-TTS, original/english before NeuTTS.",
+    )
     args = parser.parse_args()
 
     logger = setup_logging()
@@ -235,7 +515,13 @@ def main():
     with open(transcript_path, "r", encoding="utf-8") as f:
         transcript = json.load(f)
 
-    result = clean_script(transcript, logger, provider_override=args.provider)
+    result = clean_script(
+        transcript,
+        logger,
+        provider_override=args.provider,
+        target_language=args.target_language,
+    )
+    result["target_language"] = args.target_language
 
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=2)

@@ -11,7 +11,7 @@
 - Keep technical terms in English (e.g., "TouchDesigner", "workflow", "node")
 
 ## What to remove
-- Filler: um, uh, so, like, you know, actually, basically, ừm, à, thì, kiểu, cái này, cái đó
+- Filler: um, uh, so, like, you know, actually, basically, alright, ok, okay, all right, oh yeah, ừm, à, thì, kiểu, cái này, cái đó
 - False starts: "I was going to — actually let me —"
 - Repetitions of the same sentence
 - Long silences (> 1.5s) between sentences

@@ -30,6 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const customApiKeyGroup = document.getElementById('customApiKeyGroup');
     
     const voiceSelect = document.getElementById('voiceSelect');
+    const voiceEngine = document.getElementById('voiceEngine');
+    const targetLanguage = document.getElementById('targetLanguage');
     const btnUploadVoice = document.getElementById('btnUploadVoice');
     const voiceUploadInput = document.getElementById('voiceUploadInput');
     const transcriptUpload = document.getElementById('transcriptUpload');
@@ -264,6 +266,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 video_source: videoSource, 
                 transcript_path: uploadedTranscriptPath,
                 voice_ref: voiceSelect.value,
+                voice_engine: voiceEngine.value,
+                target_language: targetLanguage.value,
                 skip_transcribe: skipTranscribe,
                 force_transcribe: forceTranscribe
             };
